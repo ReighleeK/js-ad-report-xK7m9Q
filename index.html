@@ -14,37 +14,26 @@
 
         /* CSS 변수 */
         :root {
-            /* 배경 */
             --bg-base: #1A1A1A;
             --bg-card: #242424;
             --bg-card-alt: #2C2C2C;
-            --bg-card-sub: #1E1E1E;
             --border: #3A3A3A;
-
-            /* 텍스트 */
             --text-primary: #FFFFFF;
             --text-secondary: #B0B0B0;
             --text-muted: #6B6B6B;
-
-            /* 포인트 컬러 */
             --accent-main: #00E5A0;
             --accent-sub: #4A9EFF;
             --accent-negative: #FF4757;
             --accent-positive: #10D078;
-
-            /* 채널 컬러 */
             --channel-powerlink: #03C75A;
             --channel-brandsearch: #FFA94D;
             --channel-google: #9B59B6;
             --channel-meta: #1877F2;
-
-            /* 레이아웃 */
             --radius: 12px;
             --padding: 32px;
             --gap: 16px;
         }
 
-        /* 리셋 */
         * {
             margin: 0;
             padding: 0;
@@ -59,7 +48,7 @@
             font-size: 14px;
         }
 
-        /* 네비게이션 헤더 */
+        /* 헤더 */
         .header {
             background: var(--bg-card);
             border-bottom: 1px solid var(--border);
@@ -95,11 +84,51 @@
             color: var(--text-secondary);
         }
 
+        /* 탭 네비게이션 */
+        .tab-nav {
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--border);
+            padding: 0 var(--padding);
+            display: flex;
+            gap: 0;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 600;
+            padding: 16px 24px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            font-family: 'Wanted Sans', sans-serif;
+        }
+
+        .tab-button:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-button.active {
+            color: var(--accent-main);
+            border-bottom-color: var(--accent-main);
+        }
+
         /* 컨테이너 */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: var(--padding);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         /* 섹션 */
@@ -138,341 +167,422 @@
             margin-left: 16px;
         }
 
-        /* KPI 카드 그리드 */
+        /* KPI 카드 */
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: var(--gap);
+            margin-bottom: 32px;
         }
 
         .kpi-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 28px 24px;
-            transition: all 0.2s;
-        }
-
-        .kpi-card:hover {
-            border-color: var(--accent-main);
-            transform: translateY(-2px);
+            padding: 24px 20px;
         }
 
         .kpi-label {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             font-weight: 500;
         }
 
         .kpi-value {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 700;
-            margin-bottom: 12px;
             color: var(--accent-main);
             line-height: 1.1;
         }
 
-        .kpi-trend {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        .kpi-value a {
+            color: var(--accent-main);
+            text-decoration: none;
+            border-bottom: 2px dotted var(--accent-main);
         }
 
-        .kpi-trend.up {
-            color: var(--accent-positive);
-        }
-
-        .kpi-trend.down {
-            color: var(--accent-negative);
+        .kpi-value a:hover {
+            border-bottom-style: solid;
         }
 
         .kpi-detail {
             font-size: 12px;
             color: var(--text-muted);
-            line-height: 1.6;
+            margin-top: 8px;
+        }
+
+        .kpi-trend {
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 8px;
+            color: var(--accent-positive);
         }
 
         /* 인사이트 박스 */
         .insight-box {
-            margin-top: 16px;
-            padding: 20px;
-            background: linear-gradient(135deg, rgba(0, 229, 160, 0.1) 0%, rgba(74, 158, 255, 0.1) 100%);
-            border-left: 4px solid var(--accent-main);
-            border-radius: 8px;
-        }
-
-        .insight-box .insight-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--accent-main);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .insight-box .insight-content {
-            font-size: 14px;
-            color: var(--text-primary);
-            line-height: 1.9;
-        }
-
-        /* 분석 박스 */
-        .analysis-box {
-            margin-top: 16px;
-            padding: 16px;
-            background: var(--bg-card-alt);
-            border-radius: 8px;
-        }
-
-        .analysis-box .analysis-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--accent-sub);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .analysis-box .analysis-content {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.9;
-        }
-
-        /* 차트 카드 */
-        .chart-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(0, 229, 160, 0.1), rgba(74, 158, 255, 0.1));
+            border: 1px solid rgba(0, 229, 160, 0.3);
             border-radius: var(--radius);
             padding: 24px;
-            margin-bottom: var(--gap);
-        }
-
-        .chart-card.main {
-            border: 2px solid var(--accent-main);
-            box-shadow: 0 4px 12px rgba(0, 229, 160, 0.15);
-        }
-
-        .chart-card.sub {
-            background: var(--bg-card-sub);
-            border-color: var(--text-muted);
-        }
-
-        .chart-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-
-        .chart-title.main {
-            color: var(--accent-main);
-            font-size: 18px;
-        }
-
-        .chart-title.sub {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-
-        .chart-container {
-            position: relative;
-            height: 350px;
-        }
-
-        .chart-container.medium {
-            height: 280px;
-        }
-
-        .chart-container.large {
-            height: 450px;
-        }
-
-        /* 테이블 */
-        .table-wrapper {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            margin-bottom: var(--gap);
-        }
-
-        .table-title {
-            font-size: 16px;
-            font-weight: 600;
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            background: var(--bg-card-alt);
-            padding: 12px 16px;
-            text-align: left;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border);
-        }
-
-        td {
-            padding: 14px 16px;
-            font-size: 13px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover {
-            background: var(--bg-card-alt);
-        }
-
-        /* 채널 배지 */
-        .channel-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .channel-powerlink {
-            background: rgba(3, 199, 90, 0.15);
-            color: var(--channel-powerlink);
-        }
-
-        .channel-brandsearch {
-            background: rgba(255, 169, 77, 0.15);
-            color: var(--channel-brandsearch);
-        }
-
-        .channel-google {
-            background: rgba(155, 89, 182, 0.15);
-            color: var(--channel-google);
-        }
-
-        .channel-meta {
-            background: rgba(24, 119, 242, 0.15);
-            color: var(--channel-meta);
-        }
-
-        /* 숫자 포맷 */
-        .number {
-            font-variant-numeric: tabular-nums;
-        }
-
-        /* 그리드 레이아웃 */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: var(--gap);
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: var(--gap);
-        }
-
-        /* 반응형 */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            .kpi-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 18px;
-            }
-
-            .kpi-value {
-                font-size: 36px;
-            }
-
-            .logo {
-                height: 24px;
-            }
-        }
-
-        /* 하이라이트 */
-        .highlight {
-            color: var(--accent-main);
-            font-weight: 600;
-        }
-
-        .negative {
-            color: var(--accent-negative);
-        }
-
-        /* 알림 박스 */
-        .notice-box {
-            padding: 16px;
-            background: rgba(74, 158, 255, 0.1);
-            border-left: 4px solid var(--accent-sub);
-            border-radius: 8px;
-            font-size: 13px;
-            color: var(--text-secondary);
             margin-bottom: 24px;
         }
 
-        .notice-box strong {
-            color: var(--text-primary);
+        .insight-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent-main);
+            margin-bottom: 12px;
         }
 
-        /* 푸터 */
-        .footer {
-            margin-top: 64px;
-            padding: 32px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 12px;
+        .insight-content {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--gap);
+            margin-bottom: 32px;
         }
 
         /* 요약 카드 */
         .summary-card {
             background: var(--bg-card);
+            border: 2px solid var(--accent-main);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-bottom: 32px;
+        }
+
+        .summary-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        /* 차트 컨테이너 */
+        .chart-container {
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 24px;
-            margin-top: 24px;
+            margin-bottom: 24px;
+            position: relative;
         }
 
-        .summary-title {
-            font-size: 16px;
+        .chart-container canvas {
+            height: 300px !important;
+        }
+
+        .chart-container.doughnut canvas {
+            max-width: 300px;
+            max-height: 300px;
+            margin: 0 auto;
+        }
+
+        .chart-title {
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .chart-card canvas {
+            height: 300px !important;
+        }
+
+        /* 분석 박스 */
+        .analysis-box {
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--bg-card-alt);
+            border-radius: 8px;
+        }
+
+        .analysis-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
             color: var(--accent-main);
         }
 
-        .summary-content ul {
-            font-size: 14px;
-            color: var(--text-primary);
-            line-height: 2;
-            padding-left: 20px;
+        .analysis-content {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
-        .summary-content ul li {
+        /* 주의 박스 */
+        .notice-box {
+            background: rgba(255, 167, 38, 0.1);
+            border: 1px solid rgba(255, 167, 38, 0.3);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* 액션 아이템 */
+        .action-item {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent-main);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 16px;
+        }
+
+        .action-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent-main);
             margin-bottom: 8px;
+        }
+
+        .action-content {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .action-item.negative {
+            border-left-color: var(--accent-negative);
+        }
+
+        .action-item.negative .action-title {
+            color: var(--accent-negative);
+        }
+
+        .action-item.test {
+            border-left-color: var(--accent-sub);
+        }
+
+        .action-item.test .action-title {
+            color: var(--accent-sub);
+        }
+
+        /* 아코디언 */
+        .accordion {
+            margin-bottom: 16px;
+        }
+
+        .accordion-header {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .accordion-header:hover {
+            border-color: var(--accent-main);
+            background: var(--bg-card-alt);
+        }
+
+        .accordion-header.active {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-color: var(--accent-main);
+        }
+
+        .accordion-title {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .channel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .accordion-icon {
+            font-size: 20px;
+            transition: transform 0.2s;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            display: none;
+            background: var(--bg-card-alt);
+            border: 1px solid var(--accent-main);
+            border-top: none;
+            border-bottom-left-radius: var(--radius);
+            border-bottom-right-radius: var(--radius);
+            padding: 24px;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        /* 메트릭 그리드 */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .metric-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .metric-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* 그리드 레이아웃 */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--gap);
+        }
+
+        .row {
+            display: flex;
+            gap: var(--gap);
+            margin-bottom: 20px;
+        }
+
+        .col-6 {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* 실행계획 스타일 */
+        .plan-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .plan-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .plan-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .plan-badge.free {
+            background: rgba(16, 208, 120, 0.15);
+            color: var(--accent-positive);
+        }
+
+        .plan-badge.conditional {
+            background: rgba(255, 169, 77, 0.15);
+            color: #FFA94D;
+        }
+
+        .plan-content {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .budget-box {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .budget-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .budget-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent-main);
+        }
+
+        /* 반응형 */
+        @media (max-width: 1200px) {
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+            .metric-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .kpi-grid,
+            .metric-grid,
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .row {
+                flex-direction: column;
+            }
+            .tab-nav {
+                overflow-x: auto;
+            }
         }
     </style>
 </head>
@@ -481,1052 +591,1477 @@
     <div class="header">
         <div class="header-content">
             <div class="header-title">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABfcAAAEsCAYAAABuVYlJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1ODZhNzJmMy0yNjg2LTFmNGQtOGVjMy0wYzJlNGJjYzIwZWMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDNDMzIxQzhGMTgwMTFFNTlFQzNBOTNGMzQzMUQyREEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDNDMzIxQzdGMTgwMTFFNTlFQzNBOTNGMzQzMUQyREEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTRjYmYyZmUtMTBkZi0xNzQxLWI0ODUtNjlkOGZmZTYyYzMwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU4NmE3MmYzLTI2ODYtMWY0ZC04ZWMzLTBjMmU0YmNjMjBlYyIv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" alt="지란지교시큐리티" class="logo">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABfcAAAEsCAYAAABuVYlJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1ODZhNzJmMy0yNjg2LTFmNGQtOGVjMy0wYzJlNGJjYzIwZWMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDNDMzIxQzhGMTgwMTFFNTlFQzNBOTNGMzQzMUQyREEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDNDMzIxQzdGMTgwMTFFNTlFQzNBOTNGMzQzMUQyREEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTRjYmYyZmUtMTBkZi0xNzQxLWI0ODUtNjlkOGZmZTYyYzMwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU4NmE3MmYzLTI2ODYtMWY0ZC04ZWMzLTBjMmU0YmNjMjBlYyIv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yX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOgZyX0AAAAAAOiZ/y/AAEzCEN8p51HXAAAAAElFTkSuQmCC" alt="지란지교시큐리티" class="logo">
                 <div class="report-info">
-                    <h1>2026년 1분기 광고 성과 보고서</h1>
-                    <div class="report-period">2026.01.01 ~ 2026.03.31</div>
+                    <h1>2026 Q1 광고 성과 보고서</h1>
+                    <div class="report-period">2026년 1월 1일 ~ 3월 31일</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 메인 콘텐츠 -->
-    <div class="container" id="report-content">
-
-        <!-- 1. 핵심 KPI 요약 -->
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">핵심 KPI 요약</h2>
-                <p class="section-description">2026년 1분기 주요 광고 성과</p>
-            </div>
-
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-label">총 노출수</div>
-                    <div class="kpi-value">200만</div>
-                    <div class="kpi-trend up">↑ 직전분기 대비 +453.7%</div>
-                    <div class="kpi-detail">1,970,373회</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">총 클릭수</div>
-                    <div class="kpi-value">8,600</div>
-                    <div class="kpi-trend up">↑ 직전분기 대비 +94.6%</div>
-                    <div class="kpi-detail">8,590회</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">리드 확보 건수</div>
-                    <div class="kpi-value">14건</div>
-                    <div class="kpi-detail">Meta 광고 (CPA: ₩35,209)</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">광고비 지출</div>
-                    <div class="kpi-value">₩1,100만</div>
-                    <div class="kpi-trend">예산 대비 소진률: 87.1%</div>
-                    <div class="kpi-detail">₩10,873,595 (부가세 등 포함)</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">평균 클릭률 (CTR)</div>
-                    <div class="kpi-value">0.44%</div>
-                    <div class="kpi-trend up">↑ 직전분기 대비 +0.20%p</div>
-                    <div class="kpi-detail">8,590 / 1,970,373</div>
-                </div>
-
-                <div class="kpi-card">
-                    <div class="kpi-label">평균 클릭당비용 (CPC)</div>
-                    <div class="kpi-value">₩1,100</div>
-                    <div class="kpi-trend down">↓ 직전분기 대비 -54.4%</div>
-                    <div class="kpi-detail">₩1,114 (검색광고 ₩1,697 / Meta ₩615)</div>
-                </div>
-            </div>
-
-            <!-- 핵심 성과 요약 -->
-            <div class="summary-card">
-                <div class="summary-title">✨ 핵심 성과 요약</div>
-                <div class="summary-content">
-                    <ul>
-                        <li>직전분기 대비 <strong>노출수 +453.7%</strong>, <strong>클릭수 +94.6%</strong>, <strong>DB +55.6%</strong> 모든 지표 대폭 개선</li>
-                        <li>Meta 광고 신규 진입으로 <strong>155만 노출</strong> 기여, 리드 <strong>14건 확보</strong></li>
-                        <li>브랜드광고 CTR <strong>22.7%</strong>, 구글 <strong>10.06%</strong>로 높은 클릭률 기록</li>
-                        <li>광고비 <strong>11.3% 절감</strong>하면서도 노출·클릭·DB 모두 증가 (효율 대폭 개선)</li>
-                        <li>광고 유입 사용자의 <strong>73%가 브로슈어 다운로드</strong>로 제품 관심 표현</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2. 직전분기 대비 성과 비교 -->
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">직전분기 대비 성과 비교</h2>
-                <p class="section-description">2025 Q4 vs 2026 Q1 주요 지표 변화</p>
-            </div>
-
-            <div class="grid-3">
-                <div class="chart-card main">
-                    <div class="chart-title main">노출수 비교</div>
-                    <div class="chart-container medium">
-                        <canvas id="quarterImpressionChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-card main">
-                    <div class="chart-title main">클릭수 비교</div>
-                    <div class="chart-container medium">
-                        <canvas id="quarterClickChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-card main">
-                    <div class="chart-title main">광고비 비교</div>
-                    <div class="chart-container medium">
-                        <canvas id="quarterBudgetChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="insight-box">
-                <div class="insight-title">💡 인사이트</div>
-                <div class="insight-content">
-                    <strong>Meta 광고 신규 진입으로 폭발적 성장:</strong><br>
-                    2025 Q4(노출 35만, 클릭 4,413) 대비 2026 Q1(노출 197만, 클릭 8,590)로 모든 지표가 대폭 개선.<br>
-                    <br>
-                    <strong>효율 개선:</strong><br>
-                    광고비는 11.3% 절감(₩1,079만 → ₩957만)하면서도 노출·클릭·DB 모두 증가하여 ROI 대폭 향상.<br>
-                    <br>
-                    <strong>전략 성공:</strong><br>
-                    Meta 중심 전략으로 인지도 확대 + 리드 확보 동시 달성.<br>
-                    <br>
-                    <strong>1분기 성과 달성 배경:</strong><br>
-                    ① Meta 신규 진입: 155만 노출로 인지도 대폭 확대, 리드 캠페인으로 14건 확보<br>
-                    ② 정보보호공시 선제 대응: 웹페이지 공개 전 시장 선점을 위한 전략적 투자 시작. 2분기부터 본격 성과 기대
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. 전년도 동기 대비 성과 비교 (참고) -->
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title sub">전년도 동기 대비 성과 비교 (참고)</h2>
-                <p class="section-description">2025 Q1 vs 2026 Q1 주요 지표 변화</p>
-            </div>
-
-            <div class="grid-3">
-                <div class="chart-card sub">
-                    <div class="chart-title sub">노출수 비교</div>
-                    <div class="chart-container medium">
-                        <canvas id="yearImpressionChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-card sub">
-                    <div class="chart-title sub">클릭수 비교</div>
-                    <div class="chart-container medium">
-                        <canvas id="yearClickChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-card sub">
-                    <div class="chart-title sub">광고비 비교</div>
-                    <div class="chart-container medium">
-                        <canvas id="yearBudgetChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="insight-box">
-                <div class="insight-title">💡 인사이트</div>
-                <div class="insight-content">
-                    <strong>전략 전환 성공:</strong><br>
-                    2025년에는 구글 디멘드젠(노출 65만, 클릭 11,341)에 크게 의존했으나, 2026년에는 Meta 광고(노출 155만, 클릭 4,668)로 전환하여 더 적은 비용으로 높은 노출수 달성.<br>
-                    <br>
-                    <strong>클릭수 감소 원인:</strong><br>
-                    전년 대비 클릭수 63.1% 감소는 구글 디멘드젠 중단이 주요 원인.<br>
-                    2026년에는 Meta 리드 캠페인 신규 도입으로 14건 확보.<br>
-                    <br>
-                    <strong>비용 효율화:</strong><br>
-                    광고비 42.5% 절감(₩1,664만 → ₩957만)하면서도 노출수 24.2% 증가로 비용 대비 효과 극대화.
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. 광고 유형별 성과 비교 -->
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">광고 유형별 성과 비교</h2>
-                <p class="section-description">광고 유형별 1분기 통합 성과</p>
-            </div>
-
-            <div class="table-wrapper">
-                <div class="table-title">광고 유형별 상세 성과</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>광고 유형</th>
-                            <th class="number">노출수</th>
-                            <th class="number">클릭수</th>
-                            <th class="number">클릭률</th>
-                            <th class="number">광고비</th>
-                            <th class="number">CPC</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="channel-badge channel-powerlink">파워링크광고</span></td>
-                            <td class="number">395,259</td>
-                            <td class="number">926</td>
-                            <td class="number">0.23%</td>
-                            <td class="number">₩2,797,961</td>
-                            <td class="number">₩3,022</td>
-                        </tr>
-                        <tr>
-                            <td><span class="channel-badge channel-brandsearch">브랜드광고</span></td>
-                            <td class="number">3,392</td>
-                            <td class="number">770</td>
-                            <td class="number highlight">22.7%</td>
-                            <td class="number">₩1,980,000</td>
-                            <td class="number">₩2,571</td>
-                        </tr>
-                        <tr>
-                            <td><span class="channel-badge channel-google">구글 검색광고</span></td>
-                            <td class="number">22,119</td>
-                            <td class="number">2,226</td>
-                            <td class="number highlight">10.06%</td>
-                            <td class="number">₩1,920,733</td>
-                            <td class="number">₩863</td>
-                        </tr>
-                        <tr>
-                            <td><span class="channel-badge channel-meta">Meta 광고 (광고 1+2)</span></td>
-                            <td class="number">1,549,603</td>
-                            <td class="number">4,668</td>
-                            <td class="number">0.30%</td>
-                            <td class="number">₩2,870,069</td>
-                            <td class="number">₩615</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="analysis-box">
-                    <div class="analysis-title">📊 분석</div>
-                    <div class="analysis-content">
-                        <strong>브랜드광고 22.7%</strong>로 가장 높은 클릭률 기록<br>
-                        → 강력한 브랜드 인지도 반영<br>
-                        <br>
-                        <strong>구글 검색광고 10.06%</strong>로 높은 CTR + CPC ₩863으로 가장 저렴<br>
-                        → 비용 대비 효율 우수<br>
-                        <br>
-                        <strong>Meta</strong>는 노출수 155만으로 인지도 확대에 기여, CPC ₩615로 가장 경제적
-                    </div>
-                </div>
-            </div>
-
-            <!-- 광고 유형별 비교 차트 -->
-            <div class="grid-2">
-                <div class="chart-card">
-                    <div class="chart-title">광고 유형별 노출수 비교</div>
-                    <div class="chart-container medium">
-                        <canvas id="channelBubbleChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-card">
-                    <div class="chart-title">광고 유형별 광고비 비중</div>
-                    <div class="chart-container medium">
-                        <canvas id="channelBudgetChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 메타 광고 소재별 성과 -->
-            <div class="table-wrapper">
-                <div class="table-title">메타 광고 소재별 성과</div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>광고</th>
-                            <th>캠페인 목표</th>
-                            <th>집행 기간</th>
-                            <th class="number">노출수</th>
-                            <th class="number">클릭수</th>
-                            <th class="number">클릭률</th>
-                            <th class="number">DB 수</th>
-                            <th class="number">광고비</th>
-                            <th class="number">CPA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="channel-badge channel-meta">광고 1</span> 새니톡스</td>
-                            <td>인지도 / 트래픽</td>
-                            <td>1.12 ~ 1.23</td>
-                            <td class="number">1,521,269</td>
-                            <td class="number">4,109</td>
-                            <td class="number highlight">0.27%</td>
-                            <td class="number">-</td>
-                            <td class="number">₩2,377,140</td>
-                            <td class="number">-</td>
-                        </tr>
-                        <tr>
-                            <td><span class="channel-badge channel-meta">광고 2</span> 새니톡스SDK X 안랩MDS</td>
-                            <td><a href="https://docs.google.com/spreadsheets/d/1msmtQeQmUXs4z7erxOp4U4fQoriyQhJ-WUBbWHt3hMg/edit?usp=sharing" target="_blank" style="color: var(--accent-sub); text-decoration: underline;">리드</a> <span style="font-size: 11px; color: var(--text-muted);">📊</span></td>
-                            <td>3.23 ~ 4.22<br><span style="font-size:11px;color:var(--text-muted);">(1분기 3.23~3.31)</span></td>
-                            <td class="number">28,334</td>
-                            <td class="number">559</td>
-                            <td class="number">1.97%</td>
-                            <td class="number highlight" style="font-weight: 700;">14</td>
-                            <td class="number">₩492,930</td>
-                            <td class="number">₩35,209</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- 5. 광고 유입 사용자 행동 분석 (2.12~3.31 데이터) -->
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">광고 유입 사용자 행동 분석 (2.12~3.31 데이터)</h2>
-                <p class="section-description">광고를 통해 유입된 사용자의 주요 행동 패턴</p>
-            </div>
-
-            <div class="notice-box">
-                <strong>ℹ️ 데이터 수집 기간 안내</strong><br>
-                전환이벤트는 2월 12일부터 세팅되어 1월 전체 및 2월 초(2.1~2.11) 데이터는 미포함됩니다.<br>
-                따라서 아래 수치는 <strong>약 1.5개월 기간의 데이터</strong>이며, 2분기부터는 완전한 3개월 데이터로 정확한 분석이 가능합니다.
-            </div>
-
-            <!-- 제품별 브로슈어 다운로드 Top 5 -->
-            <div class="chart-card">
-                <div class="chart-title">제품별 브로슈어 다운로드 Top 5 (광고 유입, 2.12~3.31)</div>
-                <div class="chart-container">
-                    <canvas id="productBrochureChart"></canvas>
-                </div>
-                <div class="analysis-box">
-                    <div class="analysis-title">📊 분석</div>
-                    <div class="analysis-content">
-                        모바일키퍼(51건), 다큐원(45건), 스팸스나이퍼(37건)가 가장 높은 관심을 받았으며,<br>
-                        광고 유입 브로슈어 다운로드 총 219건 중 약 61%를 차지.
-                    </div>
-                </div>
-            </div>
-
-            <!-- 전환 액션 유형별 분포 -->
-            <div class="chart-card">
-                <div class="chart-title">전환 액션 유형별 분포 (총 299건, 2.12~3.31)</div>
-                <div class="chart-container medium">
-                    <canvas id="conversionTypeChart"></canvas>
-                </div>
-                <div class="analysis-box">
-                    <div class="analysis-title">📊 분석</div>
-                    <div class="analysis-content">
-                        브로슈어 다운로드(73%)가 압도적으로 높아 광고 유입 사용자의 제품 탐색 단계 비중이 큼.<br>
-                        <br>
-                        조달청 바로가기(12%) 및 문의 폼 제출(10%)은 구매 의향이 높은 행동으로,<br>
-                        총 68건의 고관심 리드 확보.
-                    </div>
-                </div>
-            </div>
-
-            <!-- 브로슈어 다운로드 & 홈페이지 문의 현황 -->
-            <div class="grid-2">
-                <div class="chart-card">
-                    <div class="chart-title">브로슈어 다운로드 현황 (2.12~3.31)</div>
-                    <div style="padding: 20px;">
-                        <div style="margin-bottom: 24px;">
-                            <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--accent-main);">
-                                전체 브로슈어 다운로드
-                            </div>
-                            <div style="font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
-                                530건
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-muted);">
-                                전체 매체 (2.12~3.31)
-                            </div>
-                        </div>
-
-                        <div style="margin-bottom: 24px;">
-                            <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--accent-sub);">
-                                광고 유입 브로슈어 다운로드
-                            </div>
-                            <div style="font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
-                                219건
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-muted);">
-                                광고 유입이 전체의 41.3% 기여
-                            </div>
-                        </div>
-
-                        <div>
-                            <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--accent-positive);">
-                                광고 기여도
-                            </div>
-                            <div style="font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
-                                41.3%
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-muted);">
-                                전체 브로슈어 다운로드 중 광고 유입 비율
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="chart-card">
-                    <div class="chart-title">홈페이지 문의 현황</div>
-                    <div style="padding: 20px;">
-                        <div style="margin-bottom: 24px;">
-                            <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--accent-main);">
-                                전체 홈페이지 문의
-                            </div>
-                            <div style="font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
-                                72건
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-muted);">
-                                Q1 전체 (1.6 ~ 3.30)
-                            </div>
-                        </div>
-
-                        <div style="margin-bottom: 24px;">
-                            <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--accent-sub);">
-                                광고 유입 문의
-                            </div>
-                            <div style="font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
-                                31건
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-muted);">
-                                광고 유입 (2.12~3.31)
-                            </div>
-                        </div>
-
-                        <div>
-                            <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--accent-positive);">
-                                광고 기여도
-                            </div>
-                            <div style="font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">
-                                43.1%
-                            </div>
-                            <div style="font-size: 12px; color: var(--text-muted);">
-                                전체 홈페이지 문의 중 광고 유입 비율 (2.12~3.31 기준)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. 주요 인사이트 및 2분기 전략 -->
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">주요 인사이트 및 2분기 전략</h2>
-            </div>
-
-            <div class="chart-card">
-                <div style="padding: 8px 0;">
-                    <div style="margin-bottom: 28px;">
-                        <div style="font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--accent-main);">
-                            💡 주요 인사이트
-                        </div>
-                        <div style="font-size: 14px; color: var(--text-primary); line-height: 2; padding-left: 20px;">
-                            <div style="margin-bottom: 16px; padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-main);">1. 검색광고 효율 차별화 전략</strong><br>
-                                파워링크광고 CPC(₩3,022)는 구글(₩863)의 3.5배이나, 노출수는 18배 높음.<br>
-                                파워링크광고는 <strong>인지도 확대</strong>, 구글은 <strong>고효율 전환 유도</strong> 채널로 차별화 가능.
-                            </div>
-
-                            <div style="margin-bottom: 16px; padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-main);">2. 브랜드 자산 가치 확인</strong><br>
-                                브랜드광고 CTR 22.7%는 강력한 브랜드 인지도를 반영.<br>
-                                브랜드 자산 강화를 위한 지속 투자 필요.
-                            </div>
-
-                            <div style="margin-bottom: 16px; padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-main);">3. Meta 리드 품질 이슈 및 전략</strong><br>
-                                영업팀 피드백에 따르면 유효 DB가 적다고 함.<br>
-                                그러나 Meta 광고 특성상 전체 DB 대비 유효 리드 비율은 제한적이며,<br>
-                                이는 추가 유효 DB 확보를 위한 <strong>필요한 과정</strong>으로 판단.<br>
-                                2분기에는 리드 필터링 강화 및 영업 연계 프로세스 개선 필요.
-                            </div>
-
-                            <div style="margin-bottom: 16px; padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-main);">4. 전환 퍼널 병목 구간</strong><br>
-                                브로슈어 다운로드(219건) → 문의 폼 제출(31건) 전환율 약 14%.<br>
-                                제품 관심은 높으나 실제 문의로 이어지지 않는 병목 존재.<br>
-                                랜딩페이지 개선 및 CTA 최적화 필요.
-                            </div>
-
-                            <div style="padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-main);">5. 제품 포트폴리오 집중 전략</strong><br>
-                                상위 3개 제품(모바일키퍼, 다큐원, 스팸스나이퍼)이 광고 유입 브로슈어의 61% 차지.<br>
-                                2분기에는 해당 제품 중심으로 광고 예산 배분 및 전환 최적화 집중.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 28px;">
-                        <div style="font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--accent-sub);">
-                            📈 2분기 개선 전략
-                        </div>
-                        <ul style="font-size: 14px; color: var(--text-primary); line-height: 2; padding-left: 20px;">
-                            <li><strong>파워링크광고:</strong> 검색어 확대 및 상위 노출 유지. 월별 노출수 감소 추세(1월 → 3월 -56%) 원인 분석 및 대응.</li>
-                            <li><strong>Meta 광고:</strong> 리드 캠페인(광고 2) 지속 진행. 리드 품질 향상을 위한 타겟팅 정교화.</li>
-                            <li><strong>구글 검색광고:</strong> CPC가 저렴하고 CTR이 높으므로 예산 증액 검토. 키워드 확장 및 광고 소재 A/B 테스트.</li>
-                            <li><strong>전환 최적화:</strong> 브로슈어 다운로드 → 문의 폼 제출 전환율 개선. 랜딩페이지 개선 및 CTA 버튼 최적화.</li>
-                            <li><strong>제품 집중:</strong> 모바일키퍼, 다큐원, 스팸스나이퍼에 광고 예산 60% 이상 배분. 해당 제품 랜딩페이지 개선 및 전환 경로 최적화.</li>
-                            <li><strong>데이터 기반 의사결정:</strong> 2분기는 전환이벤트 완전 수집으로 정확한 ROI 분석 가능. 월간 성과 모니터링 강화 및 실시간 최적화.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. 2분기 예산 운영 계획 -->
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">2분기 예산 운영 계획</h2>
-                <p class="section-description">4~6월 광고 예산 집행 계획 및 여유 예산 활용 전략</p>
-            </div>
-
-            <div class="chart-card">
-                <div style="padding: 8px 0;">
-                    <div style="margin-bottom: 28px;">
-                        <div style="font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--accent-main);">
-                            🎯 2개 콘텐츠 집중 - 메타광고 (리드 확보 중점)
-                        </div>
-
-                        <div class="grid-2">
-                            <div style="padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-main); font-size: 15px;">1️⃣ 새니톡스 SDK X 안랩 연동</strong><br>
-                                <div style="margin-top: 12px; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                                    • <strong>예산:</strong> 1월 확보 예산 500만원 중 나머지 약 200만원 소진<br>
-                                    • <strong>기간:</strong> 3~4월 중<br>
-                                    • <strong>목표:</strong> 추가 리드 확보 및 CPA 개선
-                                </div>
-                            </div>
-
-                            <div style="padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-main); font-size: 15px;">2️⃣ 정보보호 공시 콘텐츠</strong><br>
-                                <div style="margin-top: 12px; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                                    • <strong>예산:</strong> 월 고정 예산 88만원 지속 소진 + 2~3월 미소진 예산<br>
-                                    • <strong>기간:</strong> 4월~ (지속)<br>
-                                    • <strong>특징:</strong> 선제적 시장 선점 전략, 2분기부터 본격 성과 기대
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 28px;">
-                        <div style="font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--accent-sub);">
-                            🚀 구글 광고 확장
-                        </div>
-
-                        <div class="grid-2">
-                            <div style="padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-sub); font-size: 15px;">검색광고 소재 확장</strong><br>
-                                <div style="margin-top: 12px; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                                    • <strong>목표:</strong> 리드 확보를 위한 소재 확장 (추가 예산 X)<br>
-                                    • 필요시 DA(Display Ads) 광고 추가
-                                </div>
-                            </div>
-
-                            <div style="padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                                <strong style="color: var(--accent-sub); font-size: 15px;">여유 예산 활용</strong><br>
-                                <div style="margin-top: 12px; font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                                    • <strong>예산:</strong> 2025년 확보 여유 예산 <strong>₩4,887,802</strong> 활용<br>
-                                    • <strong>용도:</strong> 구글 검색광고 확장 및 필요시 DA 광고
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom: 28px;">
-                        <div style="font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--text-muted);">
-                            ✅ 기존 광고 유지
-                        </div>
-
-                        <div style="padding: 16px; background: var(--bg-card-alt); border-radius: 8px;">
-                            <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
-                                • 네이버 파워링크광고/브랜드광고<br>
-                                • 구글 검색 광고
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div style="font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--accent-negative);">
-                            📌 참고사항
-                        </div>
-
-                        <div style="padding: 16px; background: rgba(255, 71, 87, 0.1); border-left: 4px solid var(--accent-negative); border-radius: 8px;">
-                            <div style="font-size: 14px; color: var(--text-primary); line-height: 1.8;">
-                                <strong>네이버 광고 여유 예산 활용 계획</strong><br><br>
-
-                                <strong style="color: var(--accent-main);">4월:</strong><br>
-                                • 기 확보한 네이버 여유 예산으로 4월 네이버 광고 집행<br>
-                                • 월 고정 예산 중 네이버 배분액(<strong>₩250만원</strong>)을 <strong>메타광고로 이관</strong><br>
-                                • 메타광고의 경우, 현 월 배분액 만으로는 효과적인 운영이 어려워 네이버 배분액을 이관하여 운영 기반을 확보하고자 함<br>
-                                • <strong style="color: var(--accent-positive);">(월 예산 총액 변경 없음)</strong><br><br>
-
-                                <strong style="color: var(--accent-main);">5~6월:</strong><br>
-                                • 월마다 예산 소진 및 성과 체크하여 익월 광고비 기안 시 조정 및 반영 예정<br>
-                                • 확보한 메타광고 추가 예산은 필요시 메타광고 추가 배정 또는 다른 광고에 재배정 계획
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 예산 구조 요약 -->
-            <div class="summary-card">
-                <div class="summary-title">💰 2분기 예산 구조 요약</div>
-                <div class="summary-content">
-                    <ul>
-                        <li><strong>네이버 여유 예산:</strong> ₩7,640,000 (2025년 및 2026년 1분기 확보, 4월부터 순차 소진)</li>
-                        <li><strong>구글 여유 예산:</strong> ₩4,887,802 (2025년 확보)</li>
-                        <li><strong>메타 예산 증액:</strong> 4월 ₩250만원 이관 + 기존 월 고정 예산 (월 예산 총액 변경 없음)</li>
-                        <li><strong>총 활용 가능 여유 예산:</strong> ₩12,527,802</li>
-                        <li><strong>운영 방식:</strong> 월별 성과 모니터링 후 유연한 예산 재배분</li>
-                        <li><strong>핵심 전략:</strong> 네이버 배분액을 메타로 이관하여 메타 운영 기반 확보 (효율적 운영 위한 예산 재구조화)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
+    <!-- 탭 네비게이션 -->
+    <div class="tab-nav">
+        <button class="tab-button active" data-tab="summary">요약</button>
+        <button class="tab-button" data-tab="behavior">사용자 행동 분석</button>
+        <button class="tab-button" data-tab="channel">광고 유형별 성과</button>
+        <button class="tab-button" data-tab="qoq">직전분기 대비</button>
+        <button class="tab-button" data-tab="yoy">전년도 동기 대비</button>
+        <button class="tab-button" data-tab="action">계획</button>
     </div>
 
-    <!-- 푸터 -->
-    <div class="footer">
-        <p>지란지교시큐리티 광고 성과 보고서 | 2026년 1분기 (2026.01.01 ~ 2026.03.31)</p>
-        <p style="margin-top: 8px;">본 보고서는 실제 광고 집행 데이터를 기반으로 작성되었습니다.</p>
+    <!-- 메인 컨테이너 -->
+    <div class="container">
+        <!-- Tab 1: 요약 -->
+        <div class="tab-content active" id="tab-summary">
+            <!-- KPI 요약 -->
+            <div class="section">
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-label">총 광고비</div>
+                        <div class="kpi-value">₩1,022만</div>
+                        <div class="kpi-detail">VAT·수수료 포함</div>
+                        <div class="kpi-trend" style="color: var(--accent-positive); margin-top: 4px;">승인예산 대비 50.3%</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">총 노출수</div>
+                        <div class="kpi-value">197만</div>
+                        <div class="kpi-trend">직전분기 대비 +453.7%</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">총 클릭수</div>
+                        <div class="kpi-value">8,590</div>
+                        <div class="kpi-trend">직전분기 대비 +94.6%</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Meta 확보 리드</div>
+                        <div class="kpi-value">14건</div>
+                        <a href="https://docs.google.com/spreadsheets/d/1msmtQeQmUXs4z7erxOp4U4fQoriyQhJ-WUBbWHt3hMg/edit?usp=sharing" target="_blank" style="display: inline-block; margin-top: 8px; padding: 6px 12px; background: var(--accent-main); color: #1A1A1A; text-decoration: none; border-radius: 6px; font-size: 12px; font-weight: 600;">📋 리스트 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 한 줄 요약 -->
+            <div class="section">
+                <div class="summary-card">
+                    <div class="summary-text">
+                        직전 분기 대비 노출 454% 증가, 클릭 95% 증가.<br>
+                        광고 기여: 브로슈어 다운로드 219건(41.3%), 홈페이지 문의 최소 27~31건 확보.<br>
+                        2분기부터 완전한 전환 데이터 수집으로 정밀한 ROI 분석 가능.
+                    </div>
+                </div>
+            </div>
+
+            <!-- 사업 기여도 -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">사업 기여도</h2>
+                    <p class="section-description">광고가 실제 비즈니스에 미친 영향 (2.12~3.31 기준)</p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="chart-container doughnut">
+                        <div class="chart-title">브로슈어 다운로드 기여도</div>
+                        <canvas id="brochureChart"></canvas>
+                        <div style="margin-top: 16px; font-size: 13px; color: var(--text-secondary); text-align: center;">
+                            총 530건 중 219건(41.3%)이 광고를 통해 유입
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-title">홈페이지 문의 성과 (2.12~3.31)</div>
+                        <div style="padding: 12px 0;">
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">
+                                    광고 유입 문의
+                                </div>
+                                <div style="font-size: 32px; font-weight: 700; color: var(--accent-main);">
+                                    31건
+                                </div>
+                                <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                                    GA4 이벤트 추적 기준
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">
+                                    홈페이지 DB 검증
+                                </div>
+                                <div style="font-size: 28px; font-weight: 700; color: var(--text-primary);">
+                                    30건
+                                </div>
+                                <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                                    동일 기간 (테스트 포함)<br>
+                                    테스트 제외 시 27건
+                                </div>
+                            </div>
+
+                            <div class="notice-box" style="margin-top: 16px;">
+                                <strong>데이터 수집 한계</strong><br>
+                                • 전환 추적 시작: 2월 12일<br>
+                                • 1월 및 2월 초 약 1.5개월 누락<br>
+                                • GA4 총 이벤트 수 미확보로 정확한 기여율 산출 제한
+                            </div>
+
+                            <div style="margin-top: 16px; padding: 12px; background: var(--bg-card-alt); border-radius: 8px; font-size: 13px; line-height: 1.7;">
+                                <strong>현황 해석:</strong><br>
+                                • GA4(31건)과 홈페이지 DB(30건) 간 높은 일치도 확인<br>
+                                • 추적 기간 내 문의의 대다수가 광고를 통해 유입된 것으로 추정<br>
+                                • 절대 수치 기준 광고를 통해 <strong>최소 27~31건</strong> 문의 확보<br>
+                                • 2분기부터 완전한 3개월 데이터로 정밀 분석 가능
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 채널별 상세 (아코디언) -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">채널별 상세</h2>
+                </div>
+
+                <!-- 네이버 광고 -->
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="channel-dot" style="background: var(--channel-powerlink);"></span>
+                            네이버 광고 상세
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="metric-grid">
+                            <div class="metric-item">
+                                <div class="metric-label">총 광고비</div>
+                                <div class="metric-value">₩478만</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">총 노출수</div>
+                                <div class="metric-value">398,651</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">총 클릭수</div>
+                                <div class="metric-value">1,696</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">평균 CTR</div>
+                                <div class="metric-value">0.43%</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <div style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">세부 캠페인</div>
+
+                            <div style="background: var(--bg-card); padding: 16px; border-radius: 8px; margin-bottom: 12px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-weight: 600; color: var(--channel-brandsearch);">브랜드광고</span>
+                                    <span style="font-size: 13px; color: var(--text-secondary);">₩198만</span>
+                                </div>
+                                <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                                    노출 3,392 / 클릭 770 / CTR 22.7%<br>
+                                    25년도부터 운영, 26년 Q1 본격 확대하여 최고 효율 달성<br>
+                                    브랜드 인지도 기반 고효율 유입 채널
+                                </div>
+                            </div>
+
+                            <div style="background: var(--bg-card); padding: 16px; border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-weight: 600; color: var(--channel-powerlink);">파워링크광고</span>
+                                    <span style="font-size: 13px; color: var(--text-secondary);">₩280만</span>
+                                </div>
+                                <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                                    노출 395,259 / 클릭 926 / CTR 0.23%<br>
+                                    키워드 최적화 및 광고 문구 개선 필요
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 구글 광고 -->
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="channel-dot" style="background: var(--channel-google);"></span>
+                            구글 광고 상세
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="metric-grid">
+                            <div class="metric-item">
+                                <div class="metric-label">총 광고비</div>
+                                <div class="metric-value">₩218만</div>
+                                <div class="metric-note">VAT·수수료 포함</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">총 노출수</div>
+                                <div class="metric-value">22,119</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">총 클릭수</div>
+                                <div class="metric-value">2,226</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">평균 CTR</div>
+                                <div class="metric-value">10.06%</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.7;">
+                            전년 대비 노출수 증가(+30.5%), 클릭수 감소(-57.4%)<br>
+                            2025년 Q1 디멘드젠 캠페인(고CTR) 종료 후 검색광고 중심 재편<br>
+                            캠페인 포트폴리오 재구성 필요 (디스플레이, YouTube 다각화 검토)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 메타 광고 -->
+                <div class="accordion">
+                    <div class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="channel-dot" style="background: var(--channel-meta);"></span>
+                            메타 광고 상세
+                        </div>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="metric-grid">
+                            <div class="metric-item">
+                                <div class="metric-label">총 광고비</div>
+                                <div class="metric-value">₩326만</div>
+                                <div class="metric-note">VAT·수수료 포함</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">총 노출수</div>
+                                <div class="metric-value">1,549,603</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">총 클릭수</div>
+                                <div class="metric-value">4,668</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">리드 수</div>
+                                <div class="metric-value">14건</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.7;">
+                            2026년 Q1부터 리드 캠페인 신규 도입하여 14건 확보<br>
+                            CPL ₩35,209는 합리적 수준이나, 채널 안정성 판단을 위해서는<br>
+                            • CPL 변동성 (최근 n주간 ±10~20% 범위 유지 여부)<br>
+                            • CVR 추이 (클릭 대비 리드 전환율 안정성)<br>
+                            • 리드 품질 (상담 연결율, 유효 DB 비율, 영업 전환율)<br>
+                            위 지표들의 종합 검증 필요<br>
+                            <br>
+                            리드 품질 분석 완료 후 예산 확대 여부 결정 권장
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: 사용자 행동 분석 -->
+        <div class="tab-content" id="tab-behavior">
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">광고 유입 사용자 행동 분석</h2>
+                    <p class="section-description">광고를 통해 유입된 사용자의 주요 행동 패턴 (2.12~3.31)</p>
+                </div>
+
+                <div class="notice-box">
+                    <strong>ℹ️ 데이터 수집 기간 안내</strong><br>
+                    전환 이벤트는 2월 12일부터 세팅되어 1월 전체 및 2월 초(2.1~2.11) 데이터는 미포함됩니다.<br>
+                    따라서 아래 수치는 <strong>약 1.5개월 기간의 데이터</strong>이며, 2분기부터는 완전한 3개월 데이터로 정확한 분석이 가능합니다.
+                </div>
+
+                <!-- 제품별 브로슈어 다운로드 Top 5 -->
+                <div class="chart-card">
+                    <div class="chart-title">제품별 브로슈어 다운로드 Top 5 (광고 유입)</div>
+                    <div class="chart-container">
+                        <canvas id="productBrochureChart"></canvas>
+                    </div>
+                    <div class="analysis-box">
+                        <div class="analysis-title">📊 분석</div>
+                        <div class="analysis-content">
+                            모바일키퍼(51건), 다큐원(45건), 스팸스나이퍼(37건) 순으로 높은 관심 확인<br>
+                            상위 5개 제품이 광고 유입 브로슈어 다운로드 총 219건 중 약 61% 차지
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 전환 액션 유형별 분포 -->
+                <div class="chart-card">
+                    <div class="chart-title">전환 액션 유형별 분포 (총 299건)</div>
+                    <div class="chart-container">
+                        <canvas id="conversionTypeChart"></canvas>
+                    </div>
+                    <div class="analysis-box">
+                        <div class="analysis-title">📊 분석</div>
+                        <div class="analysis-content">
+                            브로슈어 다운로드(219건, 73%)가 가장 높아 광고 유입 사용자의 제품 탐색 단계 비중이 큼<br>
+                            <br>
+                            조달청 바로가기(37건, 12%) 및 문의 폼 제출(31건, 10%)은 구매 의향이 높은 행동으로,<br>
+                            총 68건의 고관심 리드 확보
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: 광고 유형별 성과 -->
+        <div class="tab-content" id="tab-channel">
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">광고 유형별 성과 비교</h2>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">광고 유형별 1분기 통합 성과 분석</p>
+                </div>
+
+                <!-- 광고 유형별 상세 테이블 -->
+                <div class="chart-card">
+                    <h3 class="chart-title">광고 유형별 상세 성과</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--border);">
+                                    <th style="padding: 12px; text-align: left; color: var(--text-secondary); font-weight: 600; font-size: 13px;">광고 유형</th>
+                                    <th style="padding: 12px; text-align: right; color: var(--text-secondary); font-weight: 600; font-size: 13px;">노출수</th>
+                                    <th style="padding: 12px; text-align: right; color: var(--text-secondary); font-weight: 600; font-size: 13px;">클릭수</th>
+                                    <th style="padding: 12px; text-align: right; color: var(--text-secondary); font-weight: 600; font-size: 13px;">클릭률</th>
+                                    <th style="padding: 12px; text-align: right; color: var(--text-secondary); font-weight: 600; font-size: 13px;">광고비</th>
+                                    <th style="padding: 12px; text-align: right; color: var(--text-secondary); font-weight: 600; font-size: 13px;">CPC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--border);">
+                                    <td style="padding: 12px;">
+                                        <span style="display: inline-block; padding: 4px 10px; background: rgba(3, 199, 90, 0.15); color: var(--channel-powerlink); border-radius: 6px; font-size: 12px; font-weight: 600;">파워링크광고</span>
+                                    </td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">395,259</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">926</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">0.23%</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">₩2,797,961</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">₩3,022</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border);">
+                                    <td style="padding: 12px;">
+                                        <span style="display: inline-block; padding: 4px 10px; background: rgba(255, 169, 77, 0.15); color: var(--channel-brandsearch); border-radius: 6px; font-size: 12px; font-weight: 600;">브랜드광고</span>
+                                    </td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">3,392</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">770</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px; color: var(--accent-positive); font-weight: 600;">22.7%</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">₩1,980,000</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">₩2,571</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border);">
+                                    <td style="padding: 12px;">
+                                        <span style="display: inline-block; padding: 4px 10px; background: rgba(155, 89, 182, 0.15); color: var(--channel-google); border-radius: 6px; font-size: 12px; font-weight: 600;">구글 검색광고</span>
+                                    </td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">22,119</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">2,226</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px; color: var(--accent-positive); font-weight: 600;">10.06%</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">₩1,920,733</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">₩863</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border);">
+                                    <td style="padding: 12px;">
+                                        <span style="display: inline-block; padding: 4px 10px; background: rgba(24, 119, 242, 0.15); color: var(--channel-meta); border-radius: 6px; font-size: 12px; font-weight: 600;">Meta 광고</span>
+                                    </td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">1,549,603</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">4,668</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">0.30%</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">₩2,870,069</td>
+                                    <td style="padding: 12px; text-align: right; font-size: 14px;">₩615</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 분석 인사이트 -->
+                    <div class="insight-box" style="margin-top: 20px;">
+                        <div class="insight-header">📊 핵심 인사이트</div>
+                        <div class="insight-content" style="line-height: 1.9;">
+                            <strong>브랜드광고 22.7%</strong>로 가장 높은 클릭률 기록 → 강력한 브랜드 인지도 반영<br>
+                            <strong>구글 검색광고 10.06%</strong>로 높은 CTR + CPC ₩863으로 가장 저렴 → 비용 대비 효율 우수<br>
+                            <strong>Meta</strong>는 노출수 155만으로 인지도 확대에 기여, CPC ₩615로 가장 경제적
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 차트 비교 -->
+                <div class="row">
+                    <div class="col-6">
+                        <div class="chart-card">
+                            <h3 class="chart-title">광고 유형별 노출수 비교</h3>
+                            <canvas id="channelExposureChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="chart-card">
+                            <h3 class="chart-title">광고 유형별 광고비 비중</h3>
+                            <canvas id="channelBudgetChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 효율성 비교 -->
+                <div class="row">
+                    <div class="col-6">
+                        <div class="chart-card">
+                            <h3 class="chart-title">광고 유형별 클릭률 비교</h3>
+                            <canvas id="channelCTRChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="chart-card">
+                            <h3 class="chart-title">광고 유형별 CPC 비교</h3>
+                            <canvas id="channelCPCChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: 직전분기 대비 -->
+        <div class="tab-content" id="tab-qoq">
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">직전분기 대비 성과</h2>
+                    <p class="section-description">2025 Q4 → 2026 Q1 변화 추이</p>
+                </div>
+
+                <div class="insight-box">
+                    <div class="insight-title">📈 핵심 요약</div>
+                    <div class="insight-content">
+                        직전 분기 대비 모든 지표 대폭 개선<br>
+                        노출수 +453.7%(35.6만→197만) / 클릭수 +94.6%(4,414→8,590) / 예산 +21.5%(₩895만→₩1,087만)<br>
+                        브랜드광고 본격 확대와 Meta 리드 캠페인 신규 도입이 성장 동력
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 32px;">
+                    <div class="chart-container">
+                        <div class="chart-title">노출수 비교</div>
+                        <canvas id="qoqExposureChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-title">클릭수 비교</div>
+                        <canvas id="qoqClickChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 24px;">
+                    <div class="chart-title">광고비 비교</div>
+                    <canvas id="qoqBudgetChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: 전년도 동기 대비 -->
+        <div class="tab-content" id="tab-yoy">
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">전년도 동기 대비 성과</h2>
+                    <p class="section-description">2025 Q1 → 2026 Q1 변화 추이</p>
+                </div>
+
+                <div class="insight-box">
+                    <div class="insight-title">📊 핵심 요약</div>
+                    <div class="insight-content">
+                        노출수 증가(+86.9%, 105만→197만), 클릭수 감소(-41.5%, 14,683→8,590)<br>
+                        2025년 Q1 구글 디멘드젠 캠페인 종료 영향<br>
+                        2026년은 브랜드광고 본격 확대와 Meta 리드 캠페인 도입으로 채널 포트폴리오 재편, 질적 성장 집중
+                    </div>
+                </div>
+
+                <div class="grid-2" style="margin-top: 32px;">
+                    <div class="chart-container">
+                        <div class="chart-title">노출수 비교</div>
+                        <canvas id="yoyExposureChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-title">클릭수 비교</div>
+                        <canvas id="yoyClickChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="margin-top: 24px;">
+                    <div class="chart-title">광고비 비교</div>
+                    <canvas id="yoyBudgetChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 5: 계획 -->
+        <div class="tab-content" id="tab-action">
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">계획</h2>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">1분기 성과 기반 2026 Q2 광고 운영 전략</p>
+                </div>
+
+                <!-- 1분기 성과 요약 및 인사이트 -->
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">1분기 성과 요약 및 핵심 인사이트</h3>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="plan-card" style="background: rgba(16, 208, 120, 0.05); border-left: 3px solid var(--accent-positive);">
+                                <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">✅ 성과</div>
+                                <div class="plan-content" style="font-size: 13px; line-height: 1.8;">
+                                    • <strong>Meta 3월 소액 테스트 성공</strong>: 56만원 투입 → 14건 확보 (CPL ₩4만)<br>
+                                    • <strong>네이버 안정적 성과</strong>: 파워링크 17건, 브랜드검색 5건 (집행률 57%)<br>
+                                    • <strong>예산 효율 운영</strong>: 1,009만원 여유예산 확보 (집행률 50.3%)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="plan-card" style="background: rgba(255, 71, 87, 0.05); border-left: 3px solid var(--accent-negative);">
+                                <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">⚠️ 한계</div>
+                                <div class="plan-content" style="font-size: 13px; line-height: 1.8;">
+                                    • <strong>구글 전환 0건 지속</strong>: 리드 양식 부재로 전환 미발생<br>
+                                    • <strong>Meta 1월 대규모 실패</strong>: 270만원 투입 → 전환 0건<br>
+                                    • <strong>전환 경로 다양화 필요</strong>: 브로슈어(220건) 외 전환 부족
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2분기 핵심 전략 -->
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">2분기 핵심 전략 (3대 전략)</h3>
+
+                    <!-- 전략 1 -->
+                    <div class="plan-card" style="margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                            <div style="width: 32px; height: 32px; background: var(--channel-meta); color: #1A1A1A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;">1</div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">Meta 정보보호공시 캠페인 단계적 확대</div>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">리스크 최소화 + 검증 기반 투자</div>
+                            </div>
+                        </div>
+                        <div class="plan-content" style="font-size: 13px;">
+                            <strong style="color: var(--text-primary);">배경</strong><br>
+                            1월 대규모 실패(270만→0건) vs 3월 소액 성공(56만→14건) 경험 학습<br><br>
+
+                            <strong style="color: var(--text-primary);">전략</strong><br>
+                            4월(176만) 시범운영 → 성과 검증 → 5월(338만) 중간투자 → 6월(176만) 최적화<br><br>
+
+                            <div style="background: rgba(0, 229, 160, 0.1); padding: 10px; border-radius: 4px; margin-top: 8px;">
+                                <strong style="color: var(--accent-positive);">기대 효과</strong><br>
+                                • Meta 리드: 14건 → 178~249건 (+1,271~1,679%)<br>
+                                • 평균 CPL: ₩35,209 → ₩24,000~33,000 (최대 32% 개선)<br>
+                                • 리스크: 단계별 검증으로 손실 최소화
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 전략 2 -->
+                    <div class="plan-card" style="margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                            <div style="width: 32px; height: 32px; background: var(--channel-google); color: #FFFFFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;">2</div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">구글 검색광고 소재 확장 + 리드 양식 도입</div>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">전환 0건 탈출</div>
+                            </div>
+                        </div>
+                        <div class="plan-content" style="font-size: 13px;">
+                            <strong style="color: var(--text-primary);">배경</strong><br>
+                            1분기 구글 전환 0건 지속 (집행률 42.2%, 리드 양식 부재)<br><br>
+
+                            <strong style="color: var(--text-primary);">전략</strong><br>
+                            • 롱테일 키워드 추가 (정보보호공시, ISMS-P 등)<br>
+                            • 반응형 검색광고(RSA) 활용 (자동 최적화)<br>
+                            • 리드 양식 확장 도입 (랜딩 페이지 이탈 방지)<br><br>
+
+                            <div style="background: rgba(0, 229, 160, 0.1); padding: 10px; border-radius: 4px; margin-top: 8px;">
+                                <strong style="color: var(--accent-positive);">기대 효과</strong><br>
+                                • 전환: 0건 → 15~25건 (리드 양식 효과)<br>
+                                • CTR: 10.06% 유지 (높은 수준 지속)<br>
+                                • 클릭수: 2,226건 → 2,500건 이상 (키워드 확장)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 전략 3 -->
+                    <div class="plan-card" style="margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                            <div style="width: 32px; height: 32px; background: var(--channel-powerlink); color: #1A1A1A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;">3</div>
+                            <div>
+                                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary);">예산 재배정을 통한 효율 극대화</div>
+                                <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">전체 채널 전략적 재배치</div>
+                            </div>
+                        </div>
+                        <div class="plan-content" style="font-size: 13px;">
+                            <strong style="color: var(--text-primary);">배경</strong><br>
+                            1분기 여유예산 1,009만원 + 25년 이월 1,186만원 = 총 2,195만원 보유<br><br>
+
+                            <strong style="color: var(--text-primary);">전략</strong><br>
+                            <div style="margin-left: 12px; margin-top: 8px; margin-bottom: 8px;">
+                                <div style="padding: 8px; background: rgba(255, 215, 0, 0.05); border-left: 2px solid var(--channel-powerlink); border-radius: 4px; margin-bottom: 8px;">
+                                    <strong style="color: var(--channel-powerlink);">네이버</strong> (파워링크 + 브랜드)<br>
+                                    • 4~5월: 25년 이월 여유예산 활용 (신규 예산 사용 최소화)<br>
+                                    • 6월: 2분기 고정 예산으로 정상 운영 재개<br>
+                                    • 효과: 신규 예산 절감하여 Meta 집중 투자 여력 확보
+                                </div>
+                                <div style="padding: 8px; background: rgba(155, 89, 182, 0.05); border-left: 2px solid var(--channel-google); border-radius: 4px; margin-bottom: 8px;">
+                                    <strong style="color: var(--channel-google);">구글</strong> (검색광고)<br>
+                                    • 월 고정 172.5만원 유지 (집행 안정성 확보)<br>
+                                    • 예산 조정 없이 소재 확장 + 리드 양식 도입으로 효율 개선<br>
+                                    • 효과: 안정적 운영 기반 위에서 전환율 개선 집중
+                                </div>
+                                <div style="padding: 8px; background: rgba(24, 119, 242, 0.05); border-left: 2px solid var(--channel-meta); border-radius: 4px;">
+                                    <strong style="color: var(--channel-meta);">Meta</strong> (리드 캠페인)<br>
+                                    • 5월: 네이버 고정 250만원 → Meta로 재배정 (총 338만원 집행)<br>
+                                    • 신규 예산 0원 (25년 이월분 + 1분기 여유예산 활용)<br>
+                                    • 효과: 고효율 리드 채널에 집중 투자, 리스크 최소화
+                                </div>
+                            </div>
+
+                            <div style="background: rgba(0, 229, 160, 0.1); padding: 10px; border-radius: 4px; margin-top: 8px;">
+                                <strong style="color: var(--accent-positive);">기대 효과</strong><br>
+                                • 신규 예산 투입 0원 (여유예산 전략적 활용)<br>
+                                • 채널별 특성 반영한 맞춤형 예산 배분<br>
+                                • 성과 기반 유연한 예산 조정 체계 구축
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 의사결정 사항 -->
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">필요한 의사결정 사항</h3>
+
+                    <div class="plan-card" style="background: rgba(255, 169, 77, 0.05); border-left: 3px solid #FFA94D;">
+                        <div class="plan-content" style="font-size: 13px; line-height: 1.9;">
+                            <strong style="color: var(--text-primary);">1. 메타광고 단계별 진행 승인</strong><br>
+                            • 4월 시범운영(176만) 후 5월 진행 여부 4/30 판단<br>
+                            • 판단 기준: CPL 35,000원 이하, 상담가능 리드 80% 이상 등 6개 항목<br><br>
+
+                            <strong style="color: var(--text-primary);">2. 구글 리드 양식 확장 도입 승인</strong><br>
+                            • 추가 예산 불필요 (기존 예산 내 진행)<br>
+                            • 전환 0건 탈출을 위한 필수 조치<br><br>
+
+                            <strong style="color: var(--text-primary);">3. 5월 네이버 예산 메타 재배정 승인</strong><br>
+                            • 네이버는 여유예산으로 커버 (서비스 중단 없음)<br>
+                            • 250만원을 Meta 정보보호공시 캠페인에 집중 투입
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 구분선 -->
+                <div style="border-top: 2px solid var(--border); margin: 40px 0;"></div>
+
+                <div style="margin-bottom: 16px;">
+                    <h3 style="font-size: 16px; font-weight: 600; color: var(--text-primary);">세부 실행 계획</h3>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">위 3대 전략의 구체적인 실행 방안</p>
+                </div>
+
+                <!-- 메타광고 리드 확보 -->
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">메타광고<br><span style="font-size: 20px;">리드확보중점</span></h3>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="plan-card">
+                                <div class="plan-header">
+                                    <div class="plan-title">새니톡스 SDK 안랩 연동</div>
+                                    <span class="plan-badge" style="background: rgba(66, 133, 244, 0.2); color: #4A9EFF;">3~4월</span>
+                                </div>
+                                <div class="plan-content" style="margin-top: 16px;">
+                                    <div style="margin-bottom: 8px;"><strong>예산</strong>&nbsp;&nbsp;₩200만 (1월 확보 예산 500만원 중 잔여)</div>
+                                    <div><strong>목표</strong>&nbsp;&nbsp;SDK 연동 홍보 및 리드 확보</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="plan-card">
+                                <div class="plan-header">
+                                    <div class="plan-title">정보보호 공시 콘텐츠</div>
+                                    <span class="plan-badge" style="background: rgba(66, 133, 244, 0.2); color: #4A9EFF;">4월~지속</span>
+                                </div>
+                                <div class="plan-content" style="margin-top: 16px;">
+                                    <div style="margin-bottom: 8px;"><strong>예산</strong>&nbsp;&nbsp;월 고정 ₩88만 + 2~3월 미소진 예산</div>
+                                    <div><strong>목표</strong>&nbsp;&nbsp;정보보호 관련 리드 지속 확보</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 구글 광고 확장 -->
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">구글 광고 확장</h3>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="plan-card">
+                                <div class="plan-header">
+                                    <div class="plan-title">검색광고 소재 확장</div>
+                                    <span class="plan-badge free">추가예산 없음</span>
+                                </div>
+                                <div class="plan-content">
+                                    <strong>목표</strong> 리드 확보를 위한 소재 및 키워드 확장<br>
+                                    <strong>예산</strong> 추가 예산 없이 기존 예산 내 진행<br>
+                                    <strong>전략</strong> 롱테일 키워드 추가, 반응형 검색광고(RSA) 활용
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="plan-card">
+                                <div class="plan-header">
+                                    <div class="plan-title">DA 광고 (필요시)</div>
+                                    <span class="plan-badge conditional">조건부 집행</span>
+                                </div>
+                                <div class="plan-content">
+                                    <strong>목표</strong> 디스플레이를 통한 브랜드 인지도 확산<br>
+                                    <strong>예산</strong> 25년도 확보한 여유 예산 활용<br>
+                                    <strong>조건</strong> 검색광고 성과 검토 후 필요시 집행
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 기존 광고 유지 -->
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">기존 광고 유지</h3>
+
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <div class="plan-title">네이버 파워링크 / 브랜드광고 + 구글 검색광고</div>
+                        </div>
+                        <div class="plan-content">
+                            <strong>전략</strong> 기존 효율 유지 및 개선에 집중<br>
+                            • 네이버 브랜드광고: 고효율 검증되어 지속 강화<br>
+                            • 네이버 파워링크: 키워드 최적화 및 CTR 개선 집중<br>
+                            • 구글 검색광고: 소재 확장 통해 클릭수 회복 목표
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 예산 재배정 -->
+                <div style="margin-bottom: 32px;">
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">예산 재배정</h3>
+
+                    <!-- 정보보호공시 캠페인 월별 예산 -->
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                            <div class="budget-box">
+                                <div class="budget-label">4월 시범운영</div>
+                                <div class="budget-value">₩176만</div>
+                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">2~3월 미소진</div>
+                            </div>
+                        </div>
+                        <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                            <div class="budget-box">
+                                <div class="budget-label">5월 중간투자</div>
+                                <div class="budget-value">₩338만</div>
+                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">4월 예산 활용</div>
+                            </div>
+                        </div>
+                        <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                            <div class="budget-box">
+                                <div class="budget-label">6월 성과확대</div>
+                                <div class="budget-value">₩176만</div>
+                                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">5~6월 예산</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 재원 구성 -->
+                    <div class="plan-card" style="margin-bottom: 16px; background: rgba(0, 229, 160, 0.05);">
+                        <div class="plan-content">
+                            <strong style="color: var(--text-primary);">2분기 메타 정보보호공시 캠페인 재원 (총 ₩690만)</strong><br>
+                            <div style="margin-top: 8px; padding-left: 8px; border-left: 2px solid var(--accent-main);">
+                                • 1분기 메타 여유예산: ₩350만 (1월 230만 + 2월 88만 + 3월 32만)<br>
+                                • 2025년 구글+메타 여유예산: ₩340만<br>
+                                • 💡 신규 예산 투입 없이 기존 여유예산으로 운영
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 월별 운영 전략 -->
+                    <div>
+                        <div class="plan-title" style="margin-bottom: 16px; font-size: 15px;">2분기 월별 운영 전략</div>
+
+                        <!-- 4월 -->
+                        <div class="plan-card" style="margin-bottom: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                <div>
+                                    <span style="font-size: 18px; font-weight: 700; color: var(--accent-main);">4월</span>
+                                    <span style="margin-left: 12px; font-size: 13px; color: var(--text-secondary);">시범 운영 기간</span>
+                                </div>
+                                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary);">총 ₩598.5만</div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0;">
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(255, 215, 0, 0.1); border-left: 3px solid var(--channel-powerlink); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">네이버</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩250만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 여유예산으로 커버<br>
+                                            • 파워링크/브랜드 유지
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(155, 89, 182, 0.1); border-left: 3px solid var(--channel-google); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">구글</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩172.5만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 검색광고 월 고정<br>
+                                            • 소재 확장 준비
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(24, 119, 242, 0.1); border-left: 3px solid var(--channel-meta); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Meta</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩176만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 정보보호공시 시범운영<br>
+                                            • 리드 40~51개 목표
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5월 -->
+                        <div class="plan-card" style="margin-bottom: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                <div>
+                                    <span style="font-size: 18px; font-weight: 700; color: var(--accent-main);">5월</span>
+                                    <span style="margin-left: 12px; font-size: 13px; color: var(--text-secondary);">중간 투자 + 소재 확장</span>
+                                </div>
+                                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary);">총 ₩510.5만</div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0;">
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(255, 215, 0, 0.1); border-left: 3px solid var(--channel-powerlink); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">네이버</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩0만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 여유예산으로 커버<br>
+                                            • ₩250만 메타로 재배정
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(155, 89, 182, 0.1); border-left: 3px solid var(--channel-google); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">구글</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩172.5만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 검색광고 월 고정<br>
+                                            • 소재 확장 본격화
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(24, 119, 242, 0.1); border-left: 3px solid var(--channel-meta); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Meta</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩338만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 전용 페이지 오픈<br>
+                                            • 리드 98~147개 목표
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6월 -->
+                        <div class="plan-card" style="margin-bottom: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                                <div>
+                                    <span style="font-size: 18px; font-weight: 700; color: var(--accent-main);">6월</span>
+                                    <span style="margin-left: 12px; font-size: 13px; color: var(--text-secondary);">성과 기반 확대</span>
+                                </div>
+                                <div style="font-size: 14px; font-weight: 600; color: var(--text-primary);">총 ₩598.5만</div>
+                            </div>
+                            <div class="row" style="margin-bottom: 0;">
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(255, 215, 0, 0.1); border-left: 3px solid var(--channel-powerlink); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">네이버</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩250만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 정상 운영 재개<br>
+                                            • 파워링크/브랜드 유지
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(155, 89, 182, 0.1); border-left: 3px solid var(--channel-google); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">구글</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩172.5만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 검색광고 월 고정<br>
+                                            • 성과 분석 및 최적화
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6" style="flex: 0 0 calc(33.33% - 11px);">
+                                    <div style="padding: 12px; background: rgba(24, 119, 242, 0.1); border-left: 3px solid var(--channel-meta); border-radius: 4px;">
+                                        <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Meta</div>
+                                        <div style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">₩176만</div>
+                                        <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.5;">
+                                            • 5월 성과 기반 최적화<br>
+                                            • 리드 40~51개 목표
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2분기 전략 요약 -->
+                        <div class="plan-card" style="background: rgba(0, 229, 160, 0.05); border: 1px solid var(--accent-main);">
+                            <div class="plan-content">
+                                <strong style="color: var(--text-primary); font-size: 14px;">2분기 핵심 전략</strong><br>
+                                <div style="margin-top: 8px; line-height: 1.8;">
+                                    • <strong>네이버</strong>: 여유예산 활용 → 5월 메타로 재배정 → 6월 정상화<br>
+                                    • <strong>구글</strong>: 검색광고 소재 확장 + 리드 양식 도입으로 전환율 개선<br>
+                                    • <strong>메타</strong>: 정보보호공시 캠페인 단계적 확대 (시범→중간→성과확대)<br>
+                                    • <strong>목표</strong>: Meta 리드 178~249개 확보, 리스크 최소화 검증 운영
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 리스크 대응 문구 -->
+                        <div class="plan-card" style="margin-top: 12px; background: rgba(255, 169, 77, 0.05); border-left: 3px solid #FFA94D;">
+                            <div class="plan-content" style="font-size: 12px; color: var(--text-secondary); line-height: 1.7;">
+                                ⚠️ <strong style="color: var(--text-primary);">유연한 운영 원칙</strong><br>
+                                위 월별 전략은 1분기 성과 기반 계획이며, 실제 운영 중 성과 데이터와 시장 상황에 따라 유동적으로 조정될 수 있습니다.
+                                매월 성과 리뷰를 통해 예산 재배분 및 캠페인 최적화를 지속적으로 진행합니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <script>
-        // Chart.js 기본 설정
-        Chart.defaults.color = '#B0B0B0';
-        Chart.defaults.borderColor = '#3A3A3A';
-        Chart.defaults.font.family = "'Wanted Sans', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif";
+        document.addEventListener('DOMContentLoaded', function() {
+            // 탭 전환
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-        // 1-1. 직전분기 대비 - 노출수 비교
-        const quarterImpressionCtx = document.getElementById('quarterImpressionChart').getContext('2d');
-        new Chart(quarterImpressionCtx, {
-            type: 'bar',
-            data: {
-                labels: ['2025 Q4', '2026 Q1'],
-                datasets: [{
-                    label: '노출수',
-                    data: [355777, 1970373],
-                    backgroundColor: ['rgba(107, 107, 107, 0.7)', 'rgba(0, 229, 160, 0.8)'],
-                    borderColor: ['#6B6B6B', '#00E5A0'],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabName = button.getAttribute('data-tab');
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    button.classList.add('active');
+                    document.getElementById(`tab-${tabName}`).classList.add('active');
+                });
+            });
+
+            // 아코디언
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    header.classList.toggle('active');
+                    header.nextElementSibling.classList.toggle('active');
+                });
+            });
+
+            // Chart.js
+            const chartColors = {
+                powerlink: '#03C75A',
+                brandsearch: '#FFA94D',
+                google: '#9B59B6',
+                meta: '#1877F2',
+                main: '#00E5A0',
+                sub: '#4A9EFF'
+            };
+
+            // 브로슈어 다운로드 (도넛, 원형)
+            new Chart(document.getElementById('brochureChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['광고 유입 (219건)', '기타 유입 (311건)'],
+                    datasets: [{
+                        data: [219, 311],
+                        backgroundColor: [chartColors.main, '#3A3A3A'],
+                        borderWidth: 0
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 1,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#B0B0B0', font: { size: 12 } }
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        // 1-2. 직전분기 대비 - 클릭수 비교
-        const quarterClickCtx = document.getElementById('quarterClickChart').getContext('2d');
-        new Chart(quarterClickCtx, {
-            type: 'bar',
-            data: {
-                labels: ['2025 Q4', '2026 Q1'],
-                datasets: [{
-                    label: '클릭수',
-                    data: [4413, 8590],
-                    backgroundColor: ['rgba(107, 107, 107, 0.7)', 'rgba(0, 229, 160, 0.8)'],
-                    borderColor: ['#6B6B6B', '#00E5A0'],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+            // 제품별 브로슈어
+            new Chart(document.getElementById('productBrochureChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['모바일키퍼', '다큐원', '스팸스나이퍼', '새니톡스', '머드픽스'],
+                    datasets: [{
+                        label: '다운로드 수',
+                        data: [51, 45, 37, 34, 27],
+                        backgroundColor: chartColors.main
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#B0B0B0' }, grid: { color: '#3A3A3A' } },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
                     }
                 }
-            }
-        });
+            });
 
-        // 1-3. 직전분기 대비 - 광고비 비교
-        const quarterBudgetCtx = document.getElementById('quarterBudgetChart').getContext('2d');
-        new Chart(quarterBudgetCtx, {
-            type: 'bar',
-            data: {
-                labels: ['2025 Q4', '2026 Q1'],
-                datasets: [{
-                    label: '광고비 (만원)',
-                    data: [1079, 957],
-                    backgroundColor: ['rgba(107, 107, 107, 0.7)', 'rgba(0, 229, 160, 0.8)'],
-                    borderColor: ['#6B6B6B', '#00E5A0'],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // 2-1. 전년도 동기 - 노출수 비교
-        const yearImpressionCtx = document.getElementById('yearImpressionChart').getContext('2d');
-        new Chart(yearImpressionCtx, {
-            type: 'bar',
-            data: {
-                labels: ['2025 Q1', '2026 Q1'],
-                datasets: [{
-                    label: '노출수',
-                    data: [1586172, 1970373],
-                    backgroundColor: ['rgba(107, 107, 107, 0.6)', 'rgba(0, 229, 160, 0.6)'],
-                    borderColor: ['#6B6B6B', '#00E5A0'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // 2-2. 전년도 동기 - 클릭수 비교
-        const yearClickCtx = document.getElementById('yearClickChart').getContext('2d');
-        new Chart(yearClickCtx, {
-            type: 'bar',
-            data: {
-                labels: ['2025 Q1', '2026 Q1'],
-                datasets: [{
-                    label: '클릭수',
-                    data: [23293, 8590],
-                    backgroundColor: ['rgba(107, 107, 107, 0.6)', 'rgba(0, 229, 160, 0.6)'],
-                    borderColor: ['#6B6B6B', '#00E5A0'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // 2-3. 전년도 동기 - 광고비 비교
-        const yearBudgetCtx = document.getElementById('yearBudgetChart').getContext('2d');
-        new Chart(yearBudgetCtx, {
-            type: 'bar',
-            data: {
-                labels: ['2025 Q1', '2026 Q1'],
-                datasets: [{
-                    label: '광고비 (만원)',
-                    data: [1664, 957],
-                    backgroundColor: ['rgba(107, 107, 107, 0.6)', 'rgba(0, 229, 160, 0.6)'],
-                    borderColor: ['#6B6B6B', '#00E5A0'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // 3. 광고 유형별 노출수 버블 차트
-        const channelBubbleCtx = document.getElementById('channelBubbleChart').getContext('2d');
-        const bubbleChart = new Chart(channelBubbleCtx, {
-            type: 'bubble',
-            data: {
-                datasets: [
-                    {
+            // 광고 유형별 노출수 비교 (버블 차트)
+            new Chart(document.getElementById('channelExposureChart'), {
+                type: 'bubble',
+                data: {
+                    datasets: [{
                         label: '파워링크광고',
-                        data: [{x: 1, y: 1, r: 20, value: 395259}],
-                        backgroundColor: 'rgba(3, 199, 90, 0.6)',
-                        borderColor: '#03C75A',
+                        data: [{x: 1, y: 1, r: 25}],
+                        backgroundColor: 'rgba(3, 199, 90, 0.7)',
+                        borderColor: 'rgba(3, 199, 90, 1)',
                         borderWidth: 2
-                    },
-                    {
+                    }, {
                         label: '브랜드광고',
-                        data: [{x: 2, y: 1, r: 5, value: 3392}],
-                        backgroundColor: 'rgba(255, 169, 77, 0.6)',
-                        borderColor: '#FFA94D',
+                        data: [{x: 2, y: 1, r: 8}],
+                        backgroundColor: 'rgba(255, 169, 77, 0.7)',
+                        borderColor: 'rgba(255, 169, 77, 1)',
                         borderWidth: 2
-                    },
-                    {
+                    }, {
                         label: '구글',
-                        data: [{x: 3, y: 1, r: 8, value: 22119}],
-                        backgroundColor: 'rgba(155, 89, 182, 0.6)',
-                        borderColor: '#9B59B6',
+                        data: [{x: 3, y: 1, r: 10}],
+                        backgroundColor: 'rgba(155, 89, 182, 0.7)',
+                        borderColor: 'rgba(155, 89, 182, 1)',
                         borderWidth: 2
-                    },
-                    {
+                    }, {
                         label: 'Meta',
-                        data: [{x: 4, y: 1, r: 50, value: 1549603}],
-                        backgroundColor: 'rgba(24, 119, 242, 0.6)',
-                        borderColor: '#1877F2',
+                        data: [{x: 4, y: 1, r: 45}],
+                        backgroundColor: 'rgba(24, 119, 242, 0.7)',
+                        borderColor: 'rgba(24, 119, 242, 1)',
                         borderWidth: 2
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#B0B0B0', font: { size: 12 }, padding: 10 }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const values = [395259, 3392, 22119, 1549603];
+                                    return context.dataset.label + ': ' + values[context.datasetIndex].toLocaleString() + '회';
+                                }
+                            }
+                        }
                     },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.dataset.label}: ${context.raw.value.toLocaleString()}회`;
+                    scales: {
+                        y: {
+                            display: false,
+                            min: 0,
+                            max: 2
+                        },
+                        x: {
+                            display: false,
+                            min: 0,
+                            max: 5
+                        }
+                    }
+                }
+            });
+
+            // 광고 유형별 광고비 비중
+            new Chart(document.getElementById('channelBudgetChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['파워링크 (29.2%)', '브랜드광고 (20.7%)', '구글 검색 (20.1%)', 'Meta (30.0%)'],
+                    datasets: [{
+                        data: [2797961, 1980000, 1920733, 2870069],
+                        backgroundColor: [
+                            'rgba(3, 199, 90, 0.8)',
+                            'rgba(255, 169, 77, 0.8)',
+                            'rgba(155, 89, 182, 0.8)',
+                            'rgba(24, 119, 242, 0.8)'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#B0B0B0', font: { size: 12 }, padding: 15 }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ₩' + context.parsed.toLocaleString();
+                                }
                             }
                         }
                     }
+                }
+            });
+
+            // 광고 유형별 클릭률 비교
+            new Chart(document.getElementById('channelCTRChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['파워링크', '브랜드광고', '구글 검색', 'Meta'],
+                    datasets: [{
+                        label: '클릭률 (%)',
+                        data: [0.23, 22.7, 10.06, 0.30],
+                        backgroundColor: [
+                            'rgba(3, 199, 90, 0.7)',
+                            'rgba(255, 169, 77, 0.7)',
+                            'rgba(155, 89, 182, 0.7)',
+                            'rgba(24, 119, 242, 0.7)'
+                        ]
+                    }]
                 },
-                scales: {
-                    x: {
-                        display: false
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return '클릭률: ' + context.parsed.y + '%';
+                                }
+                            }
+                        }
                     },
-                    y: {
-                        display: false
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#B0B0B0',
+                                callback: function(value) { return value + '%'; }
+                            },
+                            grid: { color: 'rgba(255,255,255,0.05)' }
+                        },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
                     }
                 }
-            },
-            plugins: [{
-                afterDatasetsDraw: function(chart) {
-                    const ctx = chart.ctx;
-                    chart.data.datasets.forEach(function(dataset, i) {
-                        const meta = chart.getDatasetMeta(i);
-                        meta.data.forEach(function(element, index) {
-                            ctx.save();
+            });
 
-                            // 말풍선 배경
-                            const position = element.tooltipPosition();
-                            const text = dataset.data[index].value.toLocaleString();
-                            ctx.font = 'bold 11px Wanted Sans';
-                            const textWidth = ctx.measureText(text).width;
-                            const padding = 6;
-                            const boxHeight = 20;
-                            const boxWidth = textWidth + padding * 2;
-                            const boxX = position.x - boxWidth / 2;
-                            const boxY = position.y - element.options.radius - boxHeight - 8;
+            // 광고 유형별 CPC 비교
+            new Chart(document.getElementById('channelCPCChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['파워링크', '브랜드광고', '구글 검색', 'Meta'],
+                    datasets: [{
+                        label: 'CPC (원)',
+                        data: [3022, 2571, 863, 615],
+                        backgroundColor: [
+                            'rgba(3, 199, 90, 0.7)',
+                            'rgba(255, 169, 77, 0.7)',
+                            'rgba(155, 89, 182, 0.7)',
+                            'rgba(24, 119, 242, 0.7)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'CPC: ₩' + context.parsed.y.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#B0B0B0',
+                                callback: function(value) { return '₩' + value.toLocaleString(); }
+                            },
+                            grid: { color: 'rgba(255,255,255,0.05)' }
+                        },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
+                    }
+                }
+            });
 
-                            // 말풍선 그리기
-                            ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
-                            ctx.beginPath();
-                            ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 4);
-                            ctx.fill();
+            // 전환 유형별
+            new Chart(document.getElementById('conversionTypeChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['브로슈어 (219건)', '조달청 (37건)', '문의 폼 (31건)', '전화/이메일 (12건)'],
+                    datasets: [{
+                        data: [219, 37, 31, 12],
+                        backgroundColor: [chartColors.main, chartColors.brandsearch, chartColors.google, chartColors.meta],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#B0B0B0', font: { size: 12 } }
+                        }
+                    }
+                }
+            });
 
-                            // 말풍선 꼬리
-                            ctx.beginPath();
-                            ctx.moveTo(position.x - 4, boxY + boxHeight);
-                            ctx.lineTo(position.x, position.y - element.options.radius - 4);
-                            ctx.lineTo(position.x + 4, boxY + boxHeight);
-                            ctx.closePath();
-                            ctx.fill();
+            // QoQ
+            new Chart(document.getElementById('qoqExposureChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['2025 Q4', '2026 Q1'],
+                    datasets: [{ label: '노출수', data: [355692, 1970373], backgroundColor: chartColors.main }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 35 } },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#B0B0B0' }, grid: { color: '#3A3A3A' } },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
+                    }
+                },
+                plugins: [{
+                    afterDatasetsDraw: function(chart) {
+                        const ctx = chart.ctx;
+                        const dataset = chart.data.datasets[0];
+                        const meta = chart.getDatasetMeta(0);
+                        const oldValue = dataset.data[0];
+                        const newValue = dataset.data[1];
+                        const changeRate = ((newValue - oldValue) / oldValue * 100).toFixed(1);
+                        const bar = meta.data[1];
 
-                            // 텍스트
-                            ctx.fillStyle = '#fff';
-                            ctx.textAlign = 'center';
-                            ctx.textBaseline = 'middle';
-                            ctx.fillText(text, position.x, boxY + boxHeight / 2);
+                        ctx.save();
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.fillStyle = changeRate > 0 ? '#4CAF50' : '#F44336';
+                        ctx.font = 'bold 14px sans-serif';
 
-                            ctx.restore();
+                        const arrow = changeRate > 0 ? '▲' : '▼';
+                        ctx.fillText(arrow + ' ' + Math.abs(changeRate) + '%', bar.x, bar.y - 8);
+                        ctx.restore();
+                    }
+                }]
+            });
+
+            new Chart(document.getElementById('qoqClickChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['2025 Q4', '2026 Q1'],
+                    datasets: [{ label: '클릭수', data: [4414, 8590], backgroundColor: chartColors.sub }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 35 } },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#B0B0B0' }, grid: { color: '#3A3A3A' } },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
+                    }
+                },
+                plugins: [{
+                    afterDatasetsDraw: function(chart) {
+                        const ctx = chart.ctx;
+                        const dataset = chart.data.datasets[0];
+                        const meta = chart.getDatasetMeta(0);
+                        const oldValue = dataset.data[0];
+                        const newValue = dataset.data[1];
+                        const changeRate = ((newValue - oldValue) / oldValue * 100).toFixed(1);
+                        const bar = meta.data[1];
+                        ctx.save();
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.fillStyle = changeRate > 0 ? '#4CAF50' : '#F44336';
+                        ctx.font = 'bold 14px sans-serif';
+                        const arrow = changeRate > 0 ? '▲' : '▼';
+                        ctx.fillText(arrow + ' ' + Math.abs(changeRate) + '%', bar.x, bar.y - 8);
+                        ctx.restore();
+                    }
+                }]
+            });
+
+            new Chart(document.getElementById('qoqBudgetChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['네이버', '구글', 'Meta'],
+                    datasets: [
+                        { label: '2025 Q4', data: [4218900, 1770733, 1960069], backgroundColor: '#3A3A3A' },
+                        { label: '2026 Q1', data: [4777961, 1920733, 2870069], backgroundColor: chartColors.main }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 35 } },
+                    plugins: { legend: { labels: { color: '#B0B0B0' } } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#B0B0B0' }, grid: { color: '#3A3A3A' } },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
+                    }
+                },
+                plugins: [{
+                    afterDatasetsDraw: function(chart) {
+                        const ctx = chart.ctx;
+                        const oldData = chart.data.datasets[0].data;
+                        const newData = chart.data.datasets[1].data;
+                        const meta = chart.getDatasetMeta(1);
+                        ctx.save();
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.font = 'bold 13px sans-serif';
+                        meta.data.forEach((bar, index) => {
+                            const changeRate = ((newData[index] - oldData[index]) / oldData[index] * 100).toFixed(1);
+                            ctx.fillStyle = changeRate > 0 ? '#4CAF50' : '#F44336';
+                            const arrow = changeRate > 0 ? '▲' : '▼';
+                            ctx.fillText(arrow + ' ' + Math.abs(changeRate) + '%', bar.x, bar.y - 8);
                         });
-                    });
-                }
-            }]
-        });
-
-        // 4. 광고 유형별 광고비 비중 차트
-        const channelBudgetCtx = document.getElementById('channelBudgetChart').getContext('2d');
-        new Chart(channelBudgetCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['파워링크광고', '브랜드광고', '구글', 'Meta'],
-                datasets: [{
-                    data: [2797961, 1980000, 1920733, 2870069],
-                    backgroundColor: [
-                        'rgba(3, 199, 90, 0.7)',
-                        'rgba(255, 169, 77, 0.7)',
-                        'rgba(155, 89, 182, 0.7)',
-                        'rgba(24, 119, 242, 0.7)'
-                    ],
-                    borderColor: [
-                        '#03C75A',
-                        '#FFA94D',
-                        '#9B59B6',
-                        '#1877F2'
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                const label = context.label || '';
-                                const value = context.parsed || 0;
-                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                const percentage = ((value / total) * 100).toFixed(1);
-                                return `${label}: ₩${value.toLocaleString()} (${percentage}%)`;
-                            }
-                        }
+                        ctx.restore();
                     }
-                }
-            }
-        });
-
-        // 5. 제품별 브로슈어 다운로드 Top 5 차트
-        const productBrochureCtx = document.getElementById('productBrochureChart').getContext('2d');
-        new Chart(productBrochureCtx, {
-            type: 'bar',
-            data: {
-                labels: ['모바일키퍼', '다큐원', '스팸스나이퍼', '오피스하드', '메일스크린'],
-                datasets: [{
-                    label: '브로슈어 다운로드 수',
-                    data: [51, 45, 37, 21, 17],
-                    backgroundColor: [
-                        '#6f8ac6',  // 모바일키퍼 LIGHT3
-                        '#5093cf',  // 다큐원 LIGHT3
-                        '#fbe9ec',  // 스팸스나이퍼 LIGHT1 (연하게)
-                        '#c2dcf3',  // 오피스하드 (다큐원 LIGHT2)
-                        '#4c72b6'   // 메일스크린 LIGHT3
-                    ],
-                    borderColor: [
-                        '#6f8ac6',
-                        '#5093cf',
-                        '#fbe9ec',
-                        '#c2dcf3',
-                        '#4c72b6'
-                    ],
-                    borderWidth: 1
                 }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
+            });
+
+            // YoY
+            new Chart(document.getElementById('yoyExposureChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['2025 Q1', '2026 Q1'],
+                    datasets: [{ label: '노출수', data: [1054367, 1970373], backgroundColor: chartColors.main }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 35 } },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#B0B0B0' }, grid: { color: '#3A3A3A' } },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
                     }
                 },
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: '다운로드 건수'
-                        }
+                plugins: [{
+                    afterDatasetsDraw: function(chart) {
+                        const ctx = chart.ctx;
+                        const dataset = chart.data.datasets[0];
+                        const meta = chart.getDatasetMeta(0);
+                        const oldValue = dataset.data[0];
+                        const newValue = dataset.data[1];
+                        const changeRate = ((newValue - oldValue) / oldValue * 100).toFixed(1);
+                        const bar = meta.data[1];
+                        ctx.save();
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.fillStyle = changeRate > 0 ? '#4CAF50' : '#F44336';
+                        ctx.font = 'bold 14px sans-serif';
+                        const arrow = changeRate > 0 ? '▲' : '▼';
+                        ctx.fillText(arrow + ' ' + Math.abs(changeRate) + '%', bar.x, bar.y - 8);
+                        ctx.restore();
                     }
-                }
-            }
-        });
-
-        // 6. 전환 액션 유형별 분포 차트
-        const conversionTypeCtx = document.getElementById('conversionTypeChart').getContext('2d');
-        new Chart(conversionTypeCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['브로슈어 다운로드', '조달청 바로가기', '문의 폼 제출', '전화/이메일 문의'],
-                datasets: [{
-                    data: [219, 37, 31, 12],
-                    backgroundColor: [
-                        'rgba(0, 229, 160, 0.7)',
-                        'rgba(74, 158, 255, 0.7)',
-                        'rgba(155, 89, 182, 0.7)',
-                        'rgba(255, 169, 77, 0.7)'
-                    ],
-                    borderColor: [
-                        '#00E5A0',
-                        '#4A9EFF',
-                        '#9B59B6',
-                        '#FFA94D'
-                    ],
-                    borderWidth: 2
                 }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                const label = context.label || '';
-                                const value = context.parsed || 0;
-                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                const percentage = ((value / total) * 100).toFixed(1);
-                                return `${label}: ${value}건 (${percentage}%)`;
-                            }
-                        }
+            });
+
+            new Chart(document.getElementById('yoyClickChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['2025 Q1', '2026 Q1'],
+                    datasets: [{ label: '클릭수', data: [14683, 8590], backgroundColor: chartColors.sub }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 35 } },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#B0B0B0' }, grid: { color: '#3A3A3A' } },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
                     }
-                }
-            }
+                },
+                plugins: [{
+                    afterDatasetsDraw: function(chart) {
+                        const ctx = chart.ctx;
+                        const dataset = chart.data.datasets[0];
+                        const meta = chart.getDatasetMeta(0);
+                        const oldValue = dataset.data[0];
+                        const newValue = dataset.data[1];
+                        const changeRate = ((newValue - oldValue) / oldValue * 100).toFixed(1);
+                        const bar = meta.data[1];
+                        ctx.save();
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.fillStyle = changeRate > 0 ? '#4CAF50' : '#F44336';
+                        ctx.font = 'bold 14px sans-serif';
+                        const arrow = changeRate > 0 ? '▲' : '▼';
+                        ctx.fillText(arrow + ' ' + Math.abs(changeRate) + '%', bar.x, bar.y - 8);
+                        ctx.restore();
+                    }
+                }]
+            });
+
+            new Chart(document.getElementById('yoyBudgetChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['네이버', '구글', 'Meta'],
+                    datasets: [
+                        { label: '2025 Q1', data: [3594900, 1800733, 2670069], backgroundColor: '#3A3A3A' },
+                        { label: '2026 Q1', data: [4777961, 1920733, 2870069], backgroundColor: chartColors.main }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 35 } },
+                    plugins: { legend: { labels: { color: '#B0B0B0' } } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#B0B0B0' }, grid: { color: '#3A3A3A' } },
+                        x: { ticks: { color: '#B0B0B0' }, grid: { display: false } }
+                    }
+                },
+                plugins: [{
+                    afterDatasetsDraw: function(chart) {
+                        const ctx = chart.ctx;
+                        const oldData = chart.data.datasets[0].data;
+                        const newData = chart.data.datasets[1].data;
+                        const meta = chart.getDatasetMeta(1);
+                        ctx.save();
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'bottom';
+                        ctx.font = 'bold 13px sans-serif';
+                        meta.data.forEach((bar, index) => {
+                            const changeRate = ((newData[index] - oldData[index]) / oldData[index] * 100).toFixed(1);
+                            ctx.fillStyle = changeRate > 0 ? '#4CAF50' : '#F44336';
+                            const arrow = changeRate > 0 ? '▲' : '▼';
+                            ctx.fillText(arrow + ' ' + Math.abs(changeRate) + '%', bar.x, bar.y - 8);
+                        });
+                        ctx.restore();
+                    }
+                }]
+            });
         });
     </script>
 </body>
