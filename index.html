@@ -728,25 +728,215 @@
             color: var(--accent-negative);
         }
 
+        /* 테이블 스크롤 wrapper */
+        .table-scroll {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 24px;
+        }
+
+        .table-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-scroll::-webkit-scrollbar-track {
+            background: var(--bg-card);
+            border-radius: 4px;
+        }
+
+        .table-scroll::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .table-scroll::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* 탭 네비게이션 개선 */
+        .tab-nav::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .tab-nav::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .tab-nav::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 968px) {
+            body {
+                padding: 12px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .header .period {
+                font-size: 13px;
+            }
+
+            .data-notice-small {
+                position: static;
+                text-align: left;
+                margin-top: 12px;
+            }
+
+            .tab-button {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .section-subtitle {
+                font-size: 13px;
+            }
+        }
+
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
             .container {
-                padding: 0 16px;
+                padding: 0;
+            }
+
+            .header {
+                padding: 16px 18px;
+                margin-bottom: 16px;
+            }
+
+            .header h1 {
+                font-size: 20px;
             }
 
             .section {
-                padding: 20px;
+                padding: 16px 18px;
+                margin-bottom: 32px;
+            }
+
+            .section-title {
+                font-size: 18px;
             }
 
             .hero-stat-value {
-                font-size: 42px;
+                font-size: 36px;
             }
 
-            .kpi-grid {
+            .kpi-value {
+                font-size: 28px;
+            }
+
+            .kpi-value-unit {
+                font-size: 16px;
+            }
+
+            .metric-value {
+                font-size: 28px;
+            }
+
+            .stat-value {
+                font-size: 24px;
+            }
+
+            .kpi-grid,
+            .stat-grid,
+            .budget-source-grid {
                 grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
 
             .chart-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .chart-wrapper {
+                height: 250px;
+            }
+
+            .data-table th,
+            .data-table td,
+            .qa-table th,
+            .qa-table td {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+
+            .data-table th,
+            .qa-table th {
+                font-size: 10px;
+            }
+
+            .plan-card h3,
+            .chart-card h3 {
+                font-size: 15px;
+            }
+
+            .plan-card p,
+            .plan-card ul,
+            .insight-box p,
+            .insight-box ul {
+                font-size: 13px;
+            }
+
+            .summary-box {
+                font-size: 13px;
+                padding: 14px 16px;
+            }
+
+            .mini-chart-wrapper {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .section {
+                padding: 14px 16px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+
+            .hero-stat-value {
+                font-size: 32px;
+            }
+
+            .kpi-value {
+                font-size: 24px;
+            }
+
+            .tab-button {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            .data-table,
+            .qa-table {
+                font-size: 12px;
             }
         }
 
@@ -940,6 +1130,7 @@
                 <h2 class="section-title">채널별 성과 및 역할 구조</h2>
                 <p class="section-subtitle">광고 채널별 파이프라인 기여 및 운영 방향 요약</p>
 
+                <div class="table-scroll">
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -995,6 +1186,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
 
                 <div class="insight-box">
                     <h4>채널 효율</h4>
@@ -1006,6 +1198,7 @@
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px;">Meta 캠페인 구조 및 타겟팅</h3>
+                <div class="table-scroll">
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -1052,6 +1245,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
 
                 <div class="insight-box">
                     <h4>캠페인별 역할</h4>
@@ -1064,7 +1258,8 @@
 
                 <h3 style="margin-top: 48px; margin-bottom: 24px; font-size: 20px;">채널별 전환 이벤트 분석</h3>
 
-                <table class="data-table" style="margin-bottom: 32px;">
+                <div class="table-scroll">
+                <table class="data-table" style="margin-bottom: 0;">
                     <thead>
                         <tr>
                             <th>전환 이벤트</th>
@@ -1118,6 +1313,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
 
                 <div class="chart-grid" style="margin-bottom: 32px;">
                     <div class="chart-card">
@@ -1225,6 +1421,7 @@
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px;">퍼널 상세 분석</h3>
+                <div class="table-scroll">
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -1267,6 +1464,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
 
                 <div class="insight-box" style="margin-top: 24px;">
                     <h4>2분기 예산 확대</h4>
@@ -1370,6 +1568,7 @@
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px;">2분기 예산 재투입 시나리오</h3>
+                <div class="table-scroll">
                 <table class="data-table">
                     <thead>
                         <tr>
@@ -1416,6 +1615,7 @@
                         </tr>
                     </tbody>
                 </table>
+                </div>
                 <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
                     * 4~5월 네이버 각 ₩250만을 Meta로 재배정 (네이버는 이월 예산으로 커버)<br>
                     ** 5월 Meta ₩426만 = 미소진 ₩176만 + 네이버 재배정 ₩250만<br>
