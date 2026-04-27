@@ -7,17 +7,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             /* 다크 테마 컬러 시스템 */
             --bg-base: #141414;
-            --bg-card: #1E1E1E;
-            --bg-card-alt: #252525;
-            --border: #2E2E2E;
-            --text-primary: #F0F0F0;
-            --text-secondary: #A0A8B0;
-            --text-muted: #5A6270;
+            --bg-card: #1C1C1E;
+            --bg-card-alt: #1C1C1E;
+            --border: #2C2C2E;
+            --text-primary: #F2F2F7;
+            --text-secondary: #8E8E93;
+            --text-muted: #636366;
 
             /* 기본 강조색 */
             --accent-main: #4D9EFF;
@@ -40,9 +40,9 @@
             --officehard: #C2DCF3;
             --mobilekeeper: #6F8AC6;
 
-            --radius: 12px;
-            --padding: 32px;
-            --gap: 20px;
+            --radius: 14px;
+            --padding: 24px;
+            --gap: 14px;
         }
 
         * {
@@ -68,9 +68,10 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 24px 32px;
+            padding: 22px 24px;
             margin-bottom: 24px;
             position: relative;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         .header h1 {
@@ -86,8 +87,8 @@
 
         .data-notice-small {
             position: absolute;
-            top: 24px;
-            right: 32px;
+            top: 22px;
+            right: 24px;
             font-size: 11px;
             color: var(--text-muted);
             text-align: right;
@@ -136,36 +137,38 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 32px;
-            margin-bottom: 32px;
+            padding: 22px 24px;
+            margin-bottom: 52px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         .section-tag {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             color: var(--accent-main);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.12em;
         }
 
         .section-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
             color: var(--text-primary);
+            line-height: 1.2;
             position: relative;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 32px;
+            width: 24px;
             height: 3px;
             background: var(--accent-main);
-            border-radius: 2px;
-            margin-top: 12px;
-            margin-bottom: 20px;
+            border-radius: 99px;
+            margin-top: 8px;
+            margin-bottom: 28px;
         }
 
         .section-subtitle {
@@ -180,18 +183,19 @@
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            gap: var(--gap);
             margin-bottom: 32px;
         }
 
         .hero-stat-card {
-            background: #1E2A3A;
-            border: 1px solid #2E3D52;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 32px 28px;
+            padding: 22px 24px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         .hero-stat-card::before {
@@ -200,29 +204,32 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: var(--accent-main);
+            border-radius: 3px 3px 0 0;
         }
 
         .hero-stat-label {
-            font-size: 13px;
+            font-size: 11px;
             color: var(--text-muted);
             margin-bottom: 12px;
             font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .hero-stat-value {
             font-size: 56px;
             font-weight: 900;
             color: var(--text-primary);
-            line-height: 1.2;
-            margin-bottom: 8px;
+            line-height: 1.0;
+            margin-bottom: 10px;
             letter-spacing: -1px;
         }
 
         .hero-stat-note {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             line-height: 1.5;
         }
 
@@ -234,40 +241,65 @@
         }
 
         .kpi-card {
-            background: var(--bg-card-alt);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 24px;
+            padding: 22px 24px;
             text-align: center;
+            position: relative;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-main);
+            border-radius: 3px 3px 0 0;
         }
 
         .kpi-label {
-            font-size: 13px;
+            font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .kpi-value {
-            font-size: 36px;
-            font-weight: 700;
+            font-size: 38px;
+            font-weight: 900;
             color: var(--text-primary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            line-height: 1.0;
+        }
+
+        .kpi-value-unit {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            vertical-align: middle;
         }
 
         .kpi-note {
             font-size: 12px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
         .summary-box {
-            background: rgba(77, 158, 255, 0.06);
+            background: rgba(77, 158, 255, 0.05);
+            border: 1px solid rgba(77, 158, 255, 0.12);
             border-left: 3px solid var(--accent-main);
-            border-radius: 0 8px 8px 0;
-            padding: 20px 24px;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 18px;
             margin-bottom: 24px;
             font-size: 14px;
             font-weight: 400;
-            line-height: 1.8;
+            line-height: 1.75;
             color: var(--text-secondary);
         }
 
@@ -280,14 +312,15 @@
         .visual-summary {
             display: grid;
             grid-template-columns: 1.5fr 1fr;
-            gap: 32px;
-            background: #1A2332;
-            border: 1px solid #2E3D52;
+            gap: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 32px;
+            padding: 22px 24px;
             margin-bottom: 32px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         .visual-summary::before {
@@ -296,48 +329,44 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: var(--accent-main);
+            border-radius: 3px 3px 0 0;
         }
 
         .visual-metrics {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: var(--gap);
         }
 
         .metric-item {
             background: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
-            padding: 20px;
+            padding: 18px;
             border-left: 4px solid var(--accent-main);
         }
 
-        .metric-icon {
-            font-size: 32px;
-            margin-bottom: 8px;
-            opacity: 0.8;
-        }
-
         .metric-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
             font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
         .metric-value {
             font-size: 36px;
             font-weight: 900;
             color: var(--text-primary);
-            line-height: 1.1;
-            margin-bottom: 4px;
+            line-height: 1.0;
+            margin-bottom: 6px;
         }
 
         .metric-desc {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             line-height: 1.4;
         }
 
@@ -393,10 +422,11 @@
         }
 
         .plan-card {
-            background: rgba(77, 158, 255, 0.06);
-            border-left: 3px solid var(--accent-main);
-            border-radius: 0 8px 8px 0;
-            padding: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         .plan-card h3 {
@@ -409,36 +439,67 @@
         .plan-card p {
             font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.75;
         }
 
-        .plan-card p strong {
+        .plan-card ul {
+            list-style: none;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .plan-card ul li::before {
+            content: '• ';
+            color: var(--accent-main);
+            font-weight: bold;
+        }
+
+        .plan-card p strong,
+        .plan-card ul strong {
             color: var(--text-primary);
             font-weight: 700;
         }
 
         .insight-box {
-            background: rgba(77, 158, 255, 0.06);
+            background: rgba(77, 158, 255, 0.05);
+            border: 1px solid rgba(77, 158, 255, 0.12);
             border-left: 3px solid var(--accent-main);
-            border-radius: 0 8px 8px 0;
-            padding: 16px 20px;
-            margin-bottom: 24px;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 18px;
+            margin: 14px 0;
         }
 
         .insight-box h4 {
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--accent-main);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .insight-box p {
             font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.8;
+            line-height: 1.75;
         }
 
-        .insight-box p strong {
+        .insight-box ul {
+            list-style: none;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 4px 0;
+        }
+
+        .insight-box ul li::before {
+            content: '• ';
+            color: var(--accent-main);
+            font-weight: bold;
+            margin-right: 4px;
+        }
+
+        .insight-box p strong,
+        .insight-box ul strong {
             color: var(--text-primary);
             font-weight: 700;
         }
@@ -450,27 +511,31 @@
         }
 
         .data-table th {
-            background: var(--bg-card-alt);
-            padding: 14px 16px;
+            background: #242426;
+            padding: 12px 16px;
             text-align: left;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
             border-bottom: 1px solid var(--border);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
         .data-table td {
-            padding: 14px 16px;
+            padding: 13px 16px;
             font-size: 14px;
             border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
         }
 
         .data-table td.number {
             text-align: right;
+            color: var(--text-primary);
         }
 
         .data-table tr:hover {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .chart-wrapper {
@@ -488,10 +553,11 @@
         }
 
         .chart-card {
-            background: var(--bg-card-alt);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 22px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         .chart-card h3 {
@@ -509,28 +575,32 @@
         }
 
         .stat-card {
-            background: var(--bg-card-alt);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 16px;
+            padding: 22px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         .stat-label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .stat-value {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--text-primary);
         }
 
         .stat-note {
             font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 4px;
+            color: var(--text-secondary);
+            margin-top: 6px;
         }
 
         .funnel-section {
@@ -547,31 +617,12 @@
         }
 
         .funnel-title {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             margin-bottom: 16px;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
-        /* 퍼널 단계별 배경색 */
-        .funnel-section:nth-of-type(1) .stat-grid {
-            background: rgba(77, 158, 255, 0.04);
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .funnel-section:nth-of-type(2) .stat-grid {
-            background: rgba(77, 158, 255, 0.07);
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .funnel-section:nth-of-type(3) .stat-grid {
-            background: rgba(0, 196, 113, 0.07);
-            border-radius: 8px;
-            padding: 20px;
+            letter-spacing: 0.08em;
         }
 
         .qa-table {
@@ -581,12 +632,15 @@
         }
 
         .qa-table th {
-            background: var(--bg-card-alt);
+            background: #242426;
             padding: 16px;
             text-align: left;
-            font-size: 14px;
+            font-size: 11px;
             font-weight: 700;
             border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
         .qa-table td {
@@ -594,6 +648,7 @@
             font-size: 14px;
             line-height: 1.8;
             border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
         }
 
         .highlight {
@@ -605,11 +660,12 @@
         }
 
         .budget-source-box {
-            background: var(--bg-card-alt);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 20px;
+            padding: 22px 24px;
             margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
         }
 
         .budget-source-box h4 {
@@ -622,31 +678,54 @@
         .budget-source-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
+            gap: var(--gap);
         }
 
         .budget-source-item {
-            background: rgba(77, 158, 255, 0.06);
+            background: rgba(77, 158, 255, 0.05);
             border-radius: 8px;
             padding: 12px 16px;
         }
 
         .budget-source-item .label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         .budget-source-item .value {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--text-primary);
         }
 
         .budget-source-item .note {
             font-size: 11px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-top: 4px;
+        }
+
+        .badge-positive {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(0, 196, 113, 0.12);
+            color: var(--accent-positive);
+        }
+
+        .badge-negative {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(240, 68, 82, 0.12);
+            color: var(--accent-negative);
         }
 
         @media (max-width: 768px) {
@@ -701,45 +780,35 @@
         <!-- Tab 1: 핵심 요약 (광고-세일즈 기여 통합) -->
         <div class="tab-content active" id="tab-summary">
             <div class="section">
-                <div class="section-tag">Executive Summary</div>
+                <div class="section-tag">EXECUTIVE SUMMARY</div>
                 <h2 class="section-title">핵심 요약</h2>
 
                 <div class="summary-box">
-                    <strong>1분기 투자 요약</strong><br>
-                    광고비 <strong>₩1,022만</strong> 집행으로 <strong>8,590건</strong> 유입 창출.<br>
-                    이 중 브로슈어 다운로드 <strong>219건</strong>(탐색 단계), 조달청 클릭 <strong>37건</strong>, 문의 클릭 <strong>31건</strong>(구매 의향), Meta 직접 리드 <strong>14건</strong> 확보.<br>
-                    영업팀이 Meta 리드 <strong>6건(42.9%)</strong>을 SQL*로 전환하여 미팅·제안 단계 진행 중.<br>
-                    *SQL(Sales Qualified Lead): 영업 전환 가능 리드<br><br>
-                    <strong>채널별 전환 기여도</strong><br>
-                    네이버 광고는 브로슈어 다운로드(<strong>60%</strong>), 조달청 클릭(<strong>73%</strong>), 문의 폼 제출(<strong>78%</strong>) 기준<br>
-                    전환 전반에서 가장 높은 기여도 확인.<br><br>
-                    구글 광고는 브로슈어(<strong>36%</strong>), 조달청(<strong>35%</strong>) 중심으로<br>
-                    정보 탐색 단계에서의 보조 채널 역할 수행.<br><br>
-                    Meta 잠재고객 캠페인은 리드 폼을 통해 <strong>14건</strong> 직접 확보하며<br>
-                    타 채널 대비 직접 리드 확보 채널로 기능.<br><br>
-                    광고 집행을 통해 세일즈 파이프라인 시작점 확보.
+                    광고비 <strong>₩1,022만</strong> 집행, <strong>8,590건</strong> 유입 창출.<br>
+                    브로슈어 <strong>219건</strong>, 조달청 클릭 <strong>37건</strong>, 문의 클릭 <strong>31건</strong>, Meta 리드 <strong>14건</strong> 확보.<br>
+                    영업팀이 Meta 리드 <strong>6건(42.9%)</strong>을 SQL 전환, 미팅·제안 진행 중.
                 </div>
 
                 <div class="kpi-grid">
                     <div class="kpi-card">
                         <div class="kpi-label">총 투자</div>
-                        <div class="kpi-value">₩1,022만</div>
-                        <div class="kpi-note">승인예산 ₩2,031만 중 50.3%</div>
+                        <div class="kpi-value">₩1,022<span class="kpi-value-unit">만</span></div>
+                        <div class="kpi-note">승인예산 중 50.3%</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">유입 창출</div>
-                        <div class="kpi-value">8,590건</div>
-                        <div class="kpi-note">클릭 기준, 직전분기 대비 +94.6%</div>
+                        <div class="kpi-value">8,590<span class="kpi-value-unit">건</span></div>
+                        <div class="kpi-note">전분기 대비 <span class="badge-positive">+94.6%</span></div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">SQL 전환</div>
-                        <div class="kpi-value">6건</div>
-                        <div class="kpi-note">Meta 리드 14건 중 42.9%</div>
+                        <div class="kpi-value">6<span class="kpi-value-unit">건</span></div>
+                        <div class="kpi-note">Meta 리드 중 42.9%</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">SQL당 광고비</div>
-                        <div class="kpi-value">₩54만</div>
-                        <div class="kpi-note">Meta 광고비 ₩326만 ÷ 6건</div>
+                        <div class="kpi-value">₩54<span class="kpi-value-unit">만</span></div>
+                        <div class="kpi-note">₩326만 ÷ 6건</div>
                     </div>
                 </div>
 
@@ -752,7 +821,7 @@
                         <div class="stat-card">
                             <div class="stat-label">노출수</div>
                             <div class="stat-value">197만</div>
-                            <div class="stat-note">직전분기 대비 +453.7%</div>
+                            <div class="stat-note">전분기 대비 <span class="badge-positive">+453.7%</span></div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label">브랜드 유입</div>
@@ -762,13 +831,13 @@
                         <div class="stat-card">
                             <div class="stat-label">블로그 보조 유입</div>
                             <div class="stat-value">49세션</div>
-                            <div class="stat-note">참여율 63.3%, 리타겟팅 모수 확보</div>
+                            <div class="stat-note">참여율 63.3%</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="funnel-section">
-                    <div class="funnel-title">관심/검토 <span style="font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 12px;">※ 전환 추적: 2월 12일 시작, 1~2월 초 데이터 일부 누락</span></div>
+                    <div class="funnel-title">관심/검토 <span style="font-size: 10px; color: var(--text-muted); font-weight: 400; margin-left: 12px;">※ 전환 추적: 2월 12일 시작, 1~2월 초 데이터 일부 누락</span></div>
                     <div class="stat-grid">
                         <div class="stat-card">
                             <div class="stat-label">브로슈어 다운로드</div>
@@ -778,12 +847,12 @@
                         <div class="stat-card">
                             <div class="stat-label">조달청 바로가기</div>
                             <div class="stat-value">37건</div>
-                            <div class="stat-note">구매 의향 고관심 행동</div>
+                            <div class="stat-note">구매 의향 행동</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label">고관심 리드 합계</div>
                             <div class="stat-value">68건</div>
-                            <div class="stat-note">조달청 37건 + 문의 31건</div>
+                            <div class="stat-note">조달청 + 문의</div>
                         </div>
                     </div>
                     <div class="chart-card">
@@ -804,17 +873,17 @@
                                    target="_blank"
                                    style="color: var(--accent-main); text-decoration: none;">14건</a>
                             </div>
-                            <div class="stat-note">3월 집중 확보, CPL ₩35,209</div>
+                            <div class="stat-note">CPL ₩35,209</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label">SQL 전환</div>
                             <div class="stat-value">6건</div>
-                            <div class="stat-note">전환율 42.9%, 영업팀 검증</div>
+                            <div class="stat-note">전환율 42.9%</div>
                         </div>
                         <div class="stat-card">
                             <div class="stat-label">파이프라인 진입</div>
                             <div class="stat-value">6건</div>
-                            <div class="stat-note">미팅·제안 단계 진행 중</div>
+                            <div class="stat-note">미팅·제안 단계</div>
                         </div>
                     </div>
                     <div class="chart-card">
@@ -826,45 +895,39 @@
                 </div>
 
                 <div class="insight-box">
-                    <h4>SQL 리드 특성 분석</h4>
-                    <p>
-                        SQL <strong>6건</strong> 기준,<br>
-                        CDR 및 정보보호공시·컴플라이언스 대응 관련 리드가 전체의 <strong>66%</strong>를 차지하며<br>
-                        규제 대응 및 보안 고도화 수요 중심의 유입이 확인됨.<br><br>
-                        리드 구성은 법인 비중이 <strong>83%</strong>로 대부분을 차지하며,<br>
-                        보안 전문 기업 및 대기업이 포함되어 고가치 B2B 리드 중심 구조 형성.<br><br>
-                        특히 CDR 및 정보보호공시 대응 솔루션 관심 리드는 타 대비 높은 SQL 전환 성과를 보이며,<br>
-                        규제 대상 기업군과의 타겟 적합도 또한 높은 것으로 판단됨.
-                    </p>
+                    <h4>SQL 리드 특성</h4>
+                    <ul>
+                        <li>CDR·정보보호공시·컴플라이언스 관련 리드 <strong>66%</strong> 차지</li>
+                        <li>법인 비중 <strong>83%</strong>, 보안 전문 기업·대기업 포함</li>
+                        <li>규제 대응 솔루션 중심 고가치 B2B 리드 구조</li>
+                    </ul>
                 </div>
 
                 <h3 style="font-size: 20px; font-weight: 700; margin: 40px 0 16px;">2분기 실행 계획</h3>
                 <div class="plan-grid">
                     <div class="plan-card">
                         <h3>1. Meta 광고 2분기 예산 확대</h3>
-                        <p>
-                            1분기 Meta 리드 캠페인 운영 결과 <strong>14건</strong> 확보, SQL 전환율 <strong>42.9%</strong> 검증.<br>
-                            (1월 테스트 집행 이후 3월 본격 운영, 총 투자 <strong>₩49만</strong>)<br>
-                            신규 예산 불필요(미집행 예산 재배정).<br>
-                            <strong>실행:</strong> 4월 시범(<strong>₩176만</strong>) → 5월 중간투자(<strong>₩426만</strong>) → 6월 성과확대(<strong>₩338만</strong>)
-                        </p>
+                        <ul>
+                            <li>리드 <strong>14건</strong> 확보, SQL 전환율 <strong>42.9%</strong> 검증</li>
+                            <li>4월 <strong>₩176만</strong> → 5월 <strong>₩426만</strong> → 6월 <strong>₩338만</strong></li>
+                            <li>신규 예산 불필요 (미집행 예산 재배정)</li>
+                        </ul>
                     </div>
                     <div class="plan-card">
-                        <h3>2. 구글 광고 기반 리드 확보 구조 구축 (DA + Lead Form 도입)</h3>
-                        <p>
-                            현재 검색 캠페인은 CPC <strong>₩863</strong> 수준으로 효율적인 트래픽 확보 중이나,<br>
-                            리드 수집 구조 부재로 전환 측정 및 확보에 한계 존재.<br>
-                            추가 예산 투입 없이, 기존 캠페인 구조 개선을 통한 전환 테스트 진행 가능.<br>
-                            <strong>실행:</strong> 롱테일 키워드 추가 + 리드 양식 확장 도입
-                        </p>
+                        <h3>2. 구글 광고 리드 확보 구조 구축</h3>
+                        <ul>
+                            <li>CPC <strong>₩863</strong> 효율 유지 중, 리드 수집 구조 부재</li>
+                            <li>DA + Lead Form 도입으로 전환 측정 및 확보 개선</li>
+                            <li>추가 예산 없이 기존 캠페인 구조 개선</li>
+                        </ul>
                     </div>
                     <div class="plan-card">
-                        <h3>3. 4월, 5월 네이버 예산 ₩250만 Meta 재배정</h3>
-                        <p>
-                            네이버는 25년 이월 여유예산 <strong>₩697만</strong>으로 4~5월 커버 가능.<br>
-                            4월, 5월 각 <strong>₩250만</strong>을 Meta 정보보호공시 캠페인에 집중 투입 진행 중.<br>
-                            <strong>조건:</strong> 4월 시범운영 성과 양호 시(CPL <strong>₩35,000</strong> 이하, 상담가능 리드 <strong>80%</strong> 이상)
-                        </p>
+                        <h3>3. 네이버 예산 ₩500만 Meta 재배정</h3>
+                        <ul>
+                            <li>25년 이월 예산 <strong>₩697만</strong>으로 4~5월 네이버 커버</li>
+                            <li>4~5월 각 <strong>₩250만</strong> Meta 정보보호공시 캠페인 투입</li>
+                            <li>조건: 4월 CPL <strong>₩35,000</strong> 이하, 상담가능 리드 <strong>80%</strong> 이상</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -873,7 +936,7 @@
         <!-- Tab 2: 채널별 성과 -->
         <div class="tab-content" id="tab-channel">
             <div class="section">
-                <div class="section-tag">Channel Performance</div>
+                <div class="section-tag">CHANNEL PERFORMANCE</div>
                 <h2 class="section-title">채널별 성과 및 역할 구조</h2>
                 <p class="section-subtitle">광고 채널별 파이프라인 기여 및 운영 방향 요약</p>
 
@@ -882,7 +945,7 @@
                         <tr>
                             <th>채널</th>
                             <th>퍼널 위치</th>
-                            <th>투자액</th>
+                            <th style="text-align: right;">투자액</th>
                             <th>핵심 성과</th>
                             <th>2분기 판단</th>
                         </tr>
@@ -891,62 +954,55 @@
                         <tr>
                             <td><strong style="color: var(--channel-naver);">네이버 브랜드광고</strong></td>
                             <td>하단 퍼널 - 전환 보조</td>
-                            <td>₩198만</td>
-                            <td>클릭 770건, 브랜드 인지 사용자의 전환 촉진</td>
-                            <td><span class="highlight">유지</span> 고효율 검증 완료, 지속 강화</td>
+                            <td class="number">₩198만</td>
+                            <td>클릭 770건, 브랜드 인지 전환 촉진</td>
+                            <td><span class="highlight">유지</span> 고효율 검증</td>
                         </tr>
                         <tr>
                             <td><strong style="color: var(--channel-naver);">네이버 파워링크</strong></td>
                             <td>중단 퍼널 - 수요 수확</td>
-                            <td>₩280만</td>
-                            <td>클릭 926건, 키워드 검색 기반 유입</td>
-                            <td><span class="highlight">개선</span> 키워드 구조 재편 진행</td>
+                            <td class="number">₩280만</td>
+                            <td>클릭 926건, 키워드 기반 유입</td>
+                            <td><span class="highlight">개선</span> 키워드 재편</td>
                         </tr>
                         <tr>
                             <td><strong style="color: var(--channel-google);">구글 검색광고</strong></td>
                             <td>중단 퍼널 - 수요 수확</td>
-                            <td>₩218만</td>
-                            <td>클릭 2,226건, CPC ₩863. 저비용 유입</td>
-                            <td><span class="highlight">개선 필요</span> 리드 양식 도입 시급</td>
+                            <td class="number">₩218만</td>
+                            <td>클릭 2,226건, CPC ₩863</td>
+                            <td><span class="highlight">개선 필요</span> 리드 양식 도입</td>
                         </tr>
                         <tr>
-                            <td><strong style="color: var(--channel-meta);">Meta 잠재고객 캠페인</strong></td>
+                            <td><strong style="color: var(--channel-meta);">Meta 잠재고객</strong></td>
                             <td>하단 퍼널 - 직접 전환</td>
-                            <td>₩49만</td>
-                            <td>리드 14건, SQL 6건(42.9%). 직접 리드 확보</td>
-                            <td><span class="highlight">확대</span> 2분기 ₩940만 투자</td>
+                            <td class="number">₩49만</td>
+                            <td>리드 14건, SQL 6건(42.9%)</td>
+                            <td><span class="highlight">확대</span> 2분기 ₩940만</td>
                         </tr>
                         <tr>
-                            <td><strong style="color: var(--channel-meta);">Meta 트래픽 캠페인</strong></td>
+                            <td><strong style="color: var(--channel-meta);">Meta 트래픽</strong></td>
                             <td>상단 퍼널 - 유입 확대</td>
-                            <td>₩119만</td>
-                            <td>클릭 3,249건, 홈페이지 트래픽 유도</td>
-                            <td><span class="highlight">유지</span> 잠재고객 보조 역할</td>
+                            <td class="number">₩119만</td>
+                            <td>클릭 3,249건, 홈페이지 유도</td>
+                            <td><span class="highlight">유지</span> 보조 역할</td>
                         </tr>
                         <tr>
-                            <td><strong style="color: var(--channel-meta);">Meta 인지도 캠페인</strong></td>
+                            <td><strong style="color: var(--channel-meta);">Meta 인지도</strong></td>
                             <td>상단 퍼널 - 브랜드 인지</td>
-                            <td>₩118만</td>
-                            <td>노출 122만, 브랜드 인지도 확대</td>
-                            <td><span class="highlight">보류</span> 리드 전환 우선</td>
+                            <td class="number">₩118만</td>
+                            <td>노출 122만, 인지도 확대</td>
+                            <td><span class="highlight">보류</span> 리드 우선</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div class="insight-box">
-                    <h4>채널 효율 분석</h4>
-                    <p>
-                        네이버 브랜드광고는 파워링크 대비 유입 효율이 높으며,<br>
-                        동일 예산 기준 브랜드 인지 사용자 대상 전환 촉진 효과 확인.<br><br>
-                        구글 검색광고는 CPC <strong>₩863</strong> 수준으로 전 채널 대비 비용 효율 우수.<br>
-                        2분기 리드 양식 및 디스플레이 광고(DA) 도입을 통해<br>
-                        전환 수집 구조 보완 및 신규 유입 경로 확장 예정.<br><br>
-                        Meta 잠재고객 캠페인은 SQL 전환율 <strong>42.9%</strong>로<br>
-                        직접 리드 확보 채널로서 유효성 검증 완료.<br>
-                        2분기 예산 확대를 통해 리드 규모 확장 및 효율 유지 가능성 검증.<br><br>
-                        Meta 트래픽·인지도 캠페인은 직접 전환 기여도 낮음.<br>
-                        2분기는 잠재고객 캠페인 중심으로 운영하며, 인지도 캠페인은 우선순위 조정.
-                    </p>
+                    <h4>채널 효율</h4>
+                    <ul>
+                        <li>네이버 브랜드광고: 전환 촉진 효과 확인, 파워링크 대비 고효율</li>
+                        <li>구글 검색: CPC <strong>₩863</strong> 최저 비용, 리드 양식 도입으로 전환 구조 보완 필요</li>
+                        <li>Meta 잠재고객: SQL 전환율 <strong>42.9%</strong> 검증, 2분기 규모 확대</li>
+                    </ul>
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px;">Meta 캠페인 구조 및 타겟팅</h3>
@@ -957,59 +1013,53 @@
                             <th>광고 목적</th>
                             <th>광고 대상</th>
                             <th>광고 소재 및 제품</th>
-                            <th>광고비</th>
-                            <th>노출수</th>
-                            <th>클릭수</th>
-                            <th>DB</th>
+                            <th style="text-align: right;">광고비</th>
+                            <th style="text-align: right;">노출수</th>
+                            <th style="text-align: right;">클릭수</th>
+                            <th style="text-align: right;">DB</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong>잠재고객</strong></td>
-                            <td>리드 폼을 통한 직접 리드 확보</td>
-                            <td>보안 솔루션 관심 기업, 정보보호공시 대상 기업</td>
+                            <td>리드 폼 직접 확보</td>
+                            <td>보안 솔루션 관심 기업</td>
                             <td>새니톡스</td>
-                            <td>₩49만</td>
-                            <td>28,334</td>
-                            <td>559</td>
-                            <td>14건</td>
+                            <td class="number">₩49만</td>
+                            <td class="number">28,334</td>
+                            <td class="number">559</td>
+                            <td class="number">14건</td>
                         </tr>
                         <tr>
                             <td><strong>트래픽</strong></td>
-                            <td>홈페이지 방문 유도, 재방문 사용자 확보</td>
-                            <td>보안 관련 콘텐츠 소비자, 유사 타겟</td>
+                            <td>홈페이지 방문 유도</td>
+                            <td>보안 콘텐츠 소비자</td>
                             <td>새니톡스SDK X 안랩MDS</td>
-                            <td>₩119만</td>
-                            <td>296,212</td>
-                            <td>3,249</td>
-                            <td>-</td>
+                            <td class="number">₩119만</td>
+                            <td class="number">296,212</td>
+                            <td class="number">3,249</td>
+                            <td class="number">-</td>
                         </tr>
                         <tr>
                             <td><strong>인지도</strong></td>
-                            <td>브랜드 노출 극대화, 브랜드 인지도 확대</td>
-                            <td>광범위 타겟 (정보보안 관심층)</td>
+                            <td>브랜드 노출 극대화</td>
+                            <td>정보보안 관심층</td>
                             <td>새니톡스</td>
-                            <td>₩118만</td>
-                            <td>1,225,057</td>
-                            <td>860</td>
-                            <td>-</td>
+                            <td class="number">₩118만</td>
+                            <td class="number">1,225,057</td>
+                            <td class="number">860</td>
+                            <td class="number">-</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div class="insight-box">
-                    <h4>Meta 캠페인별 역할</h4>
-                    <p>
-                        <strong>잠재고객 캠페인</strong><br>
-                        직접 리드 확보 채널로, 정보보호공시 의무 대상 기업 타겟팅을 통해 SQL 전환율 <strong>42.9%</strong> 달성.<br>
-                        2분기에는 CDR·보안 컴플라이언스 중심 타겟 정밀화를 통해 전환 효율 추가 개선 가능.<br><br>
-                        <strong>트래픽 캠페인</strong><br>
-                        홈페이지 유입을 통한 브랜드 인지 및 재방문 모수 확보.<br>
-                        직접 전환은 없으나, 잠재고객 캠페인 리타겟팅 기반으로 활용.<br><br>
-                        <strong>인지도 캠페인</strong><br>
-                        브랜드 노출 목적의 상단 퍼널 역할 수행.<br>
-                        직접 전환 기여도는 낮아 2분기에는 우선순위 조정 및 예산 효율화.
-                    </p>
+                    <h4>캠페인별 역할</h4>
+                    <ul>
+                        <li><strong>잠재고객:</strong> SQL 전환율 <strong>42.9%</strong>, 2분기 타겟 정밀화로 효율 개선</li>
+                        <li><strong>트래픽:</strong> 재방문 모수 확보, 잠재고객 리타겟팅 기반</li>
+                        <li><strong>인지도:</strong> 직접 전환 낮음, 2분기 우선순위 조정</li>
+                    </ul>
                 </div>
 
                 <h3 style="margin-top: 48px; margin-bottom: 24px; font-size: 20px;">채널별 전환 이벤트 분석</h3>
@@ -1018,11 +1068,11 @@
                     <thead>
                         <tr>
                             <th>전환 이벤트</th>
-                            <th>네이버</th>
-                            <th>구글</th>
-                            <th>Meta</th>
-                            <th>합계</th>
-                            <th>네이버 기여율</th>
+                            <th style="text-align: right;">네이버</th>
+                            <th style="text-align: right;">구글</th>
+                            <th style="text-align: right;">Meta</th>
+                            <th style="text-align: right;">합계</th>
+                            <th style="text-align: right;">네이버 기여율</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1092,18 +1142,11 @@
 
                 <div class="insight-box">
                     <h4>채널 효율 분석</h4>
-                    <p>
-                        네이버 광고는 주요 전환 이벤트 전반에서 높은 기여도를 보이며,<br>
-                        구매 의도가 높은 검색 기반 유입을 통해<br>
-                        고려 단계 이상의 잠재고객 확보에 강점 확인.<br><br>
-                        구글 광고는 브로슈어 다운로드 및 문의 폼 제출에서<br>
-                        보조적 전환 기여 채널로 기능하며,<br>
-                        정보 탐색 단계 사용자 유입 및 인지도 확장 역할 수행.<br><br>
-                        Meta 광고는 리드 폼 기반 직접 리드 확보 중심으로<br>
-                        타 채널과 차별화된 전환 구조를 보이며,<br>
-                        총 <strong>22건</strong> 수준의 리드 확보 성과로 파이프라인 기여 확인.<br><br>
-                        → 채널별 역할이 명확히 구분된 구조로, 상호 보완적 운영 가능.
-                    </p>
+                    <ul>
+                        <li>네이버: 검색 기반 고관심 유입, 전환 전반 높은 기여도</li>
+                        <li>구글: 브로슈어·문의 보조 채널, 정보 탐색 단계 역할</li>
+                        <li>Meta: 리드 폼 직접 확보 <strong>22건</strong>, 타 채널 대비 차별화</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1111,48 +1154,43 @@
         <!-- Tab 3: Meta 리드 분석 -->
         <div class="tab-content" id="tab-meta">
             <div class="section">
-                <div class="section-tag">Meta Lead Campaign Analysis</div>
+                <div class="section-tag">META LEAD CAMPAIGN ANALYSIS</div>
                 <h2 class="section-title">Meta 리드 분석</h2>
                 <p class="section-subtitle">리드 품질 및 파이프라인 가치 추정</p>
 
                 <div class="kpi-grid">
                     <div class="kpi-card">
                         <div class="kpi-label">총 리드</div>
-                        <div class="kpi-value">14건</div>
+                        <div class="kpi-value">14<span class="kpi-value-unit">건</span></div>
                         <div class="kpi-note">3월 잠재고객 캠페인</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">SQL 전환율</div>
-                        <div class="kpi-value" style="color: var(--accent-positive);">42.9%</div>
+                        <div class="kpi-value" style="color: var(--accent-positive);">42.9<span class="kpi-value-unit">%</span></div>
                         <div class="kpi-note">6건/14건, 영업팀 검증</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">SQL당 광고비</div>
-                        <div class="kpi-value">₩54.3만</div>
+                        <div class="kpi-value">₩54.3<span class="kpi-value-unit">만</span></div>
                         <div class="kpi-note">₩326만 ÷ 6건</div>
                     </div>
                     <div class="kpi-card">
                         <div class="kpi-label">파이프라인 규모</div>
-                        <div class="kpi-value">6건</div>
+                        <div class="kpi-value">6<span class="kpi-value-unit">건</span></div>
                         <div class="kpi-note">미팅·제안 진행 중</div>
                     </div>
                 </div>
 
                 <div class="insight-box">
-                    <h4>확보 리드 상세 리스트</h4>
+                    <h4>리드 리스트</h4>
                     <p>
-                        Meta 잠재고객 캠페인을 통해 확보한 <strong>14건</strong>의 리드 상세 정보를 확인하실 수 있습니다.<br>
+                        Meta 잠재고객 캠페인 확보 <strong>14건</strong> 리드 상세 정보<br>
                         <a href="https://docs.google.com/spreadsheets/d/1msmtQeQmUXs4z7erxOp4U4fQoriyQhJ-WUBbWHt3hMg/edit?usp=sharing"
                            target="_blank"
                            style="color: var(--accent-main); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--accent-main);">
                             → 리드 리스트 보기 (Google Sheets)
                         </a><br><br>
-                        <strong>리드 운영 현황</strong><br>
-                        Meta 잠재고객 캠페인을 통해 확보된 리드는<br>
-                        지속적으로 업데이트 및 관리 중이며,<br>
-                        영업 운영 효율을 고려해 주기 단위로 공유 예정.<br><br>
-                        최초 접촉 이후 일정 기간 경과 시점에<br>
-                        영업 진행 현황을 확인하여 리드 관리 체계 지속 운영 계획
+                        리드는 하루 단위로 업데이트, 주/월 단위로 영업팀 추가 리마인드 예정
                     </p>
                 </div>
 
@@ -1178,17 +1216,12 @@
                 </div>
 
                 <div class="insight-box">
-                    <h4>리드 품질 분석 (영업 관점)</h4>
-                    <p>
-                        SQL 기준,<br>
-                        CDR 및 보안 컴플라이언스 대응 관련 리드 비중이 높게 나타나며<br>
-                        규제 대응 및 보안 고도화 수요 중심의 유입 확인.<br><br>
-                        법인 비중 <strong>83%</strong>로 B2B 타겟팅 정확도 확보되었으며,<br>
-                        보안 전문 기업 및 대기업이 포함되어<br>
-                        영업적 가치가 높은 리드 구조 형성.<br><br>
-                        또한 정보보호공시 의무 대상 기업과 높은 타겟 적합도를 보이며,<br>
-                        2분기 Meta 캠페인 타겟팅 우선순위로 설정 권장.
-                    </p>
+                    <h4>리드 품질</h4>
+                    <ul>
+                        <li>CDR·보안 컴플라이언스 관련 리드 비중 높음, 규제 대응 수요 중심</li>
+                        <li>법인 비중 <strong>83%</strong>, 보안 전문 기업·대기업 포함</li>
+                        <li>정보보호공시 의무 대상 기업과 높은 타겟 적합도, 2분기 우선 타겟 권장</li>
+                    </ul>
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px;">퍼널 상세 분석</h3>
@@ -1196,58 +1229,52 @@
                     <thead>
                         <tr>
                             <th>단계</th>
-                            <th>건수</th>
-                            <th>전환율</th>
+                            <th style="text-align: right;">건수</th>
+                            <th style="text-align: right;">전환율</th>
                             <th>비고</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>총 리드</td>
-                            <td>14건</td>
-                            <td>-</td>
+                            <td class="number">14건</td>
+                            <td class="number">-</td>
                             <td>3월 집중 확보</td>
                         </tr>
                         <tr>
                             <td>연락 성공</td>
-                            <td>7건</td>
-                            <td>50.0%</td>
-                            <td>영업팀 최초 연락 연결</td>
+                            <td class="number">7건</td>
+                            <td class="number">50.0%</td>
+                            <td>영업팀 최초 연락</td>
                         </tr>
                         <tr>
                             <td>SQL 전환</td>
-                            <td>6건</td>
-                            <td>42.9%</td>
+                            <td class="number">6건</td>
+                            <td class="number">42.9%</td>
                             <td>미팅·제안서 전달</td>
                         </tr>
                         <tr>
                             <td>Pipeline 진입</td>
-                            <td>6건</td>
-                            <td>42.9%</td>
+                            <td class="number">6건</td>
+                            <td class="number">42.9%</td>
                             <td>제안서 전달 완료</td>
                         </tr>
                         <tr>
                             <td>계약 전환</td>
-                            <td>0건</td>
-                            <td>0.0%</td>
-                            <td>진행 중 (1분기 내 미발생)</td>
+                            <td class="number">0건</td>
+                            <td class="number">0.0%</td>
+                            <td>진행 중</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div class="insight-box" style="margin-top: 24px;">
-                    <h4>2분기 예산 확대 판단</h4>
-                    <p>
-                        <strong>결론: Meta 광고 예산 확대 가능</strong><br><br>
-                        SQL 전환율 <strong>42.9%</strong>로 리드 품질 검증 완료.<br>
-                        1분기 Meta 리드 캠페인 운영 결과 <strong>14건</strong> 확보 (1월 테스트 이후 3월 본격 운영).<br><br>
-                        <strong>2분기 예산 계획:</strong><br>
-                        • 4월: <strong>₩176만</strong> (2~3월 미소진 ₩88만 × 2)<br>
-                        • 5월: <strong>₩426만</strong> (4월 미소진 ₩88만 + 5월 미소진 ₩88만 + 네이버 재배정 ₩250만)<br>
-                        • 6월: <strong>₩338만</strong> (6월 ₩88만 + 네이버 재배정 ₩250만)<br>
-                        • 합계: <strong>₩940만</strong><br><br>
-                        신규 예산 투입 0원 (1분기 미집행 예산 + 25년 이월 예산 활용).
-                    </p>
+                    <h4>2분기 예산 확대</h4>
+                    <ul>
+                        <li>SQL 전환율 <strong>42.9%</strong> 검증, 리드 <strong>14건</strong> 확보 (3월 본격 운영)</li>
+                        <li>4월 <strong>₩176만</strong>, 5월 <strong>₩426만</strong>, 6월 <strong>₩338만</strong>, 합계 <strong>₩940만</strong></li>
+                        <li>신규 예산 투입 0원 (미집행 + 이월 예산 활용)</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1255,7 +1282,7 @@
         <!-- Tab 4: 2분기 계획 -->
         <div class="tab-content" id="tab-investment">
             <div class="section">
-                <div class="section-tag">Q2 Investment Plan</div>
+                <div class="section-tag">Q2 INVESTMENT PLAN</div>
                 <h2 class="section-title">2분기 계획 요약</h2>
 
                 <div class="summary-box" style="margin-bottom: 40px;">
@@ -1263,22 +1290,19 @@
                         <div>
                             <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">예산 운영</h4>
                             <p style="font-size: 14px; line-height: 1.7; color: var(--text-secondary);">
-                                추가 예산 투입 없이 기존 예산 재배분 중심으로 운영<br>
-                                (미집행 및 이월 예산 활용)
+                                추가 예산 없이 기존 예산 재배분 (미집행 + 이월)
                             </p>
                         </div>
                         <div>
                             <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">채널 전략</h4>
                             <p style="font-size: 14px; line-height: 1.7; color: var(--text-secondary);">
-                                Meta 중심 리드 확보 구조로 확장<br>
-                                구글광고는 전환 수집 구조 보완, 네이버 광고는 브랜드 수요 대응 유지
+                                Meta 중심 리드 확보 구조 확장<br>구글 전환 수집, 네이버 브랜드 유지
                             </p>
                         </div>
                         <div>
                             <h4 style="font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">리드 전략</h4>
                             <p style="font-size: 14px; line-height: 1.7; color: var(--text-secondary);">
-                                B2B 고가치 리드 중심 운영<br>
-                                타겟 집중을 통한 파이프라인 효율 개선
+                                B2B 고가치 리드 중심<br>타겟 집중, 파이프라인 효율 개선
                             </p>
                         </div>
                     </div>
@@ -1306,21 +1330,12 @@
                 </div>
 
                 <div class="insight-box">
-                    <h4>운영 리스크 및 대응 조치</h4>
-                    <p>
-                        <strong>1. 구글 광고 랜딩페이지 이슈</strong><br>
-                        랜딩페이지 비정상 작동으로 광고 집행이 일시 중단되었으며,<br>
-                        캠페인 재세팅 과정에서도 동일 이슈로 집행 불가 상태가 지속됨.<br><br>
-                        자사 웹사이트의 해외 접속 제한으로 구글 시스템 내 크롤링이 불가한 원인 확인 후 조치 완료.<br><br>
-                        <strong>2. Meta 광고 예산 통합 운영</strong><br>
-                        1월 Meta 트래픽·인지도 캠페인은 클릭수, 노출수 중심 KPI로 운영.<br><br>
-                        월 <strong>88만 원</strong> 수준의 분산 집행 대비 효율을 고려하여,<br>
-                        예산을 통합해 집중 집행하는 방식으로 운영.<br><br>
-                        <strong>3. 정보보호공시 및 컴플라이언스 키워드 확장</strong><br>
-                        정보보호공시 페이지 및 가이드북 배포 이전,<br>
-                        기존 제품 키워드 캠페인에 관련 키워드 선제 반영하여 운영.<br><br>
-                        컴플라이언스 키워드 또한 제품별로 확장 적용하여 타겟 범위 확대.
-                    </p>
+                    <h4>운영 리스크</h4>
+                    <ul>
+                        <li><strong>구글 랜딩페이지 이슈:</strong> 해외 접속 제한으로 크롤링 불가, 조치 완료</li>
+                        <li><strong>Meta 예산 통합:</strong> 월 <strong>88만 원</strong> 분산 대비 효율 고려, 통합 집행</li>
+                        <li><strong>키워드 확장:</strong> 정보보호공시·컴플라이언스 키워드 선제 반영</li>
+                    </ul>
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px;">25년 이월 여유 예산 ₩1,186만 출처</h3>
@@ -1330,12 +1345,12 @@
                         <div class="budget-source-item">
                             <div class="label">네이버 브랜드광고</div>
                             <div class="value">₩697만</div>
-                            <div class="note">25년 미집행 예산</div>
+                            <div class="note">25년 미집행</div>
                         </div>
                         <div class="budget-source-item">
                             <div class="label">구글 + Meta</div>
                             <div class="value">₩489만</div>
-                            <div class="note">25년 미집행 예산</div>
+                            <div class="note">25년 미집행</div>
                         </div>
                         <div class="budget-source-item">
                             <div class="label">총 이월 예산</div>
@@ -1346,14 +1361,12 @@
                 </div>
 
                 <div class="insight-box">
-                    <h4>여유 예산 활용 전략</h4>
-                    <p>
-                        네이버 이월 예산(<strong>₩697만</strong>)은 4~5월 네이버 광고비로 활용.<br>
-                        4, 5월 네이버 고정 예산(<strong>₩250만×2</strong>)은 Meta 광고비로 재배정하여 집행.<br><br>
-                        구글+Meta 이월 예산(<strong>₩489만</strong>)은 Meta 확대 예산과 별도로 운영하며,<br>
-                        추후 필요시 구글 DA 광고 테스트 예산으로 활용 예정.<br><br>
-                        1분기 미집행 예산(<strong>₩1,009만</strong>) + 25년 이월 예산(<strong>₩1,186만</strong>) = 총 <strong>₩2,195만</strong> 활용 가능.
-                    </p>
+                    <h4>여유 예산 활용</h4>
+                    <ul>
+                        <li>네이버 이월 <strong>₩697만</strong>으로 4~5월 네이버 광고비 커버</li>
+                        <li>4~5월 네이버 고정 <strong>₩250만×2</strong>를 Meta로 재배정</li>
+                        <li>구글+Meta 이월 <strong>₩489만</strong>은 향후 구글 DA 테스트 예산 활용</li>
+                    </ul>
                 </div>
 
                 <h3 style="font-size: 18px; font-weight: 700; margin: 32px 0 16px;">2분기 예산 재투입 시나리오</h3>
@@ -1361,52 +1374,52 @@
                     <thead>
                         <tr>
                             <th>채널</th>
-                            <th>4월</th>
-                            <th>5월</th>
-                            <th>6월</th>
-                            <th>합계</th>
+                            <th style="text-align: right;">4월</th>
+                            <th style="text-align: right;">5월</th>
+                            <th style="text-align: right;">6월</th>
+                            <th style="text-align: right;">합계</th>
                             <th>예상 성과</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong style="color: var(--channel-naver);">네이버</strong></td>
-                            <td>₩0만*</td>
-                            <td>₩0만*</td>
-                            <td>₩250만</td>
-                            <td>₩250만</td>
+                            <td class="number">₩0만*</td>
+                            <td class="number">₩0만*</td>
+                            <td class="number">₩250만</td>
+                            <td class="number">₩250만</td>
                             <td>4~5월 Meta 재배정, 25년 여유예산(₩697만) 활용</td>
                         </tr>
                         <tr>
                             <td><strong style="color: var(--channel-google);">구글</strong></td>
-                            <td>₩172.5만</td>
-                            <td>₩172.5만</td>
-                            <td>₩172.5만</td>
-                            <td>₩517.5만</td>
+                            <td class="number">₩172.5만</td>
+                            <td class="number">₩172.5만</td>
+                            <td class="number">₩172.5만</td>
+                            <td class="number">₩517.5만</td>
                             <td>리드 양식 및 DA 도입, 전환 구조 검증</td>
                         </tr>
                         <tr>
                             <td><strong style="color: var(--channel-meta);">Meta</strong></td>
-                            <td>₩176만</td>
-                            <td>₩426만**</td>
-                            <td>₩338만***</td>
-                            <td>₩940만</td>
+                            <td class="number">₩176만</td>
+                            <td class="number">₩426만**</td>
+                            <td class="number">₩338만***</td>
+                            <td class="number">₩940만</td>
                             <td>리드 규모 확장 및 효율 유지 가능성 검증</td>
                         </tr>
-                        <tr>
+                        <tr style="font-weight: 600;">
                             <td><strong>합계</strong></td>
-                            <td>₩348.5만</td>
-                            <td>₩598.5만</td>
-                            <td>₩760.5만</td>
-                            <td>₩1,707.5만</td>
+                            <td class="number">₩348.5만</td>
+                            <td class="number">₩598.5만</td>
+                            <td class="number">₩760.5만</td>
+                            <td class="number">₩1,707.5만</td>
                             <td>-</td>
                         </tr>
                     </tbody>
                 </table>
-                <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">
-                    * 4~5월 네이버 고정 각 ₩250만을 Meta로 재배정 (네이버는 25년 이월 예산 ₩697만으로 커버)<br>
-                    ** 5월 Meta ₩426만 = 4월 미소진 ₩88만 + 5월 미소진 ₩88만 + 네이버 재배정 ₩250만<br>
-                    *** 6월 Meta ₩338만 = 6월 ₩88만 + 네이버 재배정 ₩250만
+                <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    * 4~5월 네이버 각 ₩250만을 Meta로 재배정 (네이버는 이월 예산으로 커버)<br>
+                    ** 5월 Meta ₩426만 = 미소진 ₩176만 + 네이버 재배정 ₩250만<br>
+                    *** 6월 Meta ₩338만 = 미소진 ₩88만 + 네이버 재배정 ₩250만
                 </p>
 
                 <div class="chart-card" style="margin-top: 24px;">
@@ -1418,13 +1431,12 @@
 
                 <div class="insight-box" style="margin-top: 24px;">
                     <h4>예산 재배정 효과</h4>
-                    <p>
-                        신규 예산 투입 없이 2분기 <strong>₩1,707.5만</strong> 집행 가능.<br>
-                        1분기 미집행 <strong>₩1,009만</strong> + 25년 이월 <strong>₩1,186만</strong> 전략적 활용.<br><br>
-                        Meta 집중 투자(<strong>₩940만</strong>)를 통해 고품질 리드 확보 채널 중심으로 운영 효율 강화 및 파이프라인 확장 기반 확보.<br><br>
-                        구글은 리드 양식 도입을 통해 기존 트래픽 기반 전환 수집 구조 보완 및 성과 측정 고도화.<br><br>
-                        네이버는 안정적 운영 유지.
-                    </p>
+                    <ul>
+                        <li>신규 예산 없이 2분기 <strong>₩1,707.5만</strong> 집행 (1분기 미집행 <strong>₩1,009만</strong> + 25년 이월 <strong>₩1,186만</strong> 전략적 활용)</li>
+                        <li>Meta 집중 투자(<strong>₩940만</strong>) - 고품질 리드 확보 채널 중심 운영 효율 강화, 파이프라인 확장 기반 확보</li>
+                        <li>구글 - 리드 양식 도입으로 기존 트래픽 기반 전환 수집 구조 보완, 성과 측정 고도화</li>
+                        <li>네이버 - 안정적 운영 유지</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1450,24 +1462,24 @@
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    labels: { color: '#A0A8B0', font: { size: 12 } }
+                    labels: { color: '#8E8E93', font: { size: 12 } }
                 },
                 tooltip: {
-                    backgroundColor: '#252525',
-                    titleColor: '#F0F0F0',
-                    bodyColor: '#A0A8B0',
-                    borderColor: '#2E2E2E',
+                    backgroundColor: '#1C1C1E',
+                    titleColor: '#F2F2F7',
+                    bodyColor: '#8E8E93',
+                    borderColor: '#2C2C2E',
                     borderWidth: 1
                 }
             },
             scales: {
                 x: {
-                    ticks: { color: '#A0A8B0' },
-                    grid: { color: '#2E2E2E' }
+                    ticks: { color: '#8E8E93' },
+                    grid: { color: '#2C2C2E' }
                 },
                 y: {
-                    ticks: { color: '#A0A8B0' },
-                    grid: { color: '#2E2E2E' }
+                    ticks: { color: '#8E8E93' },
+                    grid: { color: '#2C2C2E' }
                 }
             }
         };
@@ -1528,7 +1540,7 @@
                 plugins: {
                     legend: {
                         position: 'bottom',
-                        labels: { color: '#A0A8B0', font: { size: 11 }, padding: 10 }
+                        labels: { color: '#8E8E93', font: { size: 11 }, padding: 10 }
                     }
                 }
             }
@@ -1562,19 +1574,19 @@
                 scales: {
                     x: {
                         stacked: true,
-                        ticks: { color: '#A0A8B0' },
-                        grid: { color: '#2E2E2E' }
+                        ticks: { color: '#8E8E93' },
+                        grid: { color: '#2C2C2E' }
                     },
                     y: {
                         stacked: true,
-                        ticks: { color: '#A0A8B0' },
-                        grid: { color: '#2E2E2E' }
+                        ticks: { color: '#8E8E93' },
+                        grid: { color: '#2C2C2E' }
                     }
                 }
             }
         });
 
-        // 월별 예산 배분 (채널 컬러 적용)
+        // 월별 예산 배분 (채널 공식색 적용)
         new Chart(document.getElementById('monthlyBudgetChart'), {
             type: 'bar',
             data: {
@@ -1583,7 +1595,7 @@
                     {
                         label: '네이버 (여유예산)',
                         data: [250, 250, 0],
-                        backgroundColor: '#5A6270'
+                        backgroundColor: '#636366'
                     },
                     {
                         label: '네이버',
@@ -1607,16 +1619,16 @@
                 scales: {
                     x: {
                         stacked: true,
-                        ticks: { color: '#A0A8B0' },
-                        grid: { color: '#2E2E2E' }
+                        ticks: { color: '#8E8E93' },
+                        grid: { color: '#2C2C2E' }
                     },
                     y: {
                         stacked: true,
                         ticks: {
-                            color: '#A0A8B0',
+                            color: '#8E8E93',
                             callback: function(value) { return '₩' + value + '만'; }
                         },
-                        grid: { color: '#2E2E2E' }
+                        grid: { color: '#2C2C2E' }
                     }
                 }
             }
@@ -1640,16 +1652,16 @@
                     legend: {
                         position: 'bottom',
                         labels: {
-                            color: '#A0A8B0',
+                            color: '#8E8E93',
                             font: { size: 12 },
                             padding: 15
                         }
                     },
                     tooltip: {
-                        backgroundColor: '#252525',
-                        titleColor: '#F0F0F0',
-                        bodyColor: '#A0A8B0',
-                        borderColor: '#2E2E2E',
+                        backgroundColor: '#1C1C1E',
+                        titleColor: '#F2F2F7',
+                        bodyColor: '#8E8E93',
+                        borderColor: '#2C2C2E',
                         borderWidth: 1,
                         callbacks: {
                             label: function(context) {
@@ -1670,7 +1682,7 @@
                 labels: ['폼 제출', '브로슈어 다운로드', '조달청 클릭', '문의 클릭'],
                 datasets: [{
                     data: [501, 211, 40, 20],
-                    backgroundColor: ['#4D9EFF', '#00C471', '#F59E0B', '#5A6270'],
+                    backgroundColor: ['#4D9EFF', '#00C471', '#F59E0B', '#636366'],
                     borderWidth: 0
                 }]
             },
@@ -1681,16 +1693,16 @@
                     legend: {
                         position: 'bottom',
                         labels: {
-                            color: '#A0A8B0',
+                            color: '#8E8E93',
                             font: { size: 12 },
                             padding: 15
                         }
                     },
                     tooltip: {
-                        backgroundColor: '#252525',
-                        titleColor: '#F0F0F0',
-                        bodyColor: '#A0A8B0',
-                        borderColor: '#2E2E2E',
+                        backgroundColor: '#1C1C1E',
+                        titleColor: '#F2F2F7',
+                        bodyColor: '#8E8E93',
+                        borderColor: '#2C2C2E',
                         borderWidth: 1,
                         callbacks: {
                             label: function(context) {
